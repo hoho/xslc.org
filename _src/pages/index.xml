@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<block:b-page
+    xmlns:block="http://xslc.org/BEM/Block"
+    xmlns:elem="http://xslc.org/BEM/Element"
+    xmlns:mod="http://xslc.org/BEM/Modifier">
+
+    <elem:content>
+        <block:b-header />
+        <block:b-section mod:test="ghg">
+            <elem:fuck mod:ololo="pyc" />
+        </block:b-section>
+        <block:b-footer mod:index="yes" />
+    </elem:content>
+
+</block:b-page>
