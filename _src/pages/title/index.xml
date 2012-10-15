@@ -4,8 +4,33 @@
     xmlns:elem="http://xslc.org/BEM/Element"
     xmlns:mod="http://xslc.org/BEM/Modifier">
 
+    <elem:title>Title's About</elem:title>
     <elem:content>
-        <block:b-header />
+        <block:b-header>Title's About</block:b-header>
+        <block:b-section>
+            <elem:title>What is «eXtra Space for Logs and Code»?</elem:title>
+            <elem:content>
+<p>Title sucks, I agree.</p>
+<p>
+    <block:b-link href="http://xslc.org/">xslc.org</block:b-link>
+    domain name has initially been registered to hold
+    <block:b-link href="https://github.com/hoho/xslc">XSLCache</block:b-link>
+    extension's namespaces and documentation. And
+    <block:b-code>XSLCache</block:b-code> didn't appear to be really useful and
+    promising. So, when I started another pet project, I needed some place to
+    describe it. The thought of registering new domain name per each new
+    (potentially unpromising too) idea looks painful and expensive.
+</p>
+<p>
+    <block:b-code>xslc.org</block:b-code> feels cosy enough, I've just tried to
+    abbreviate something different with the same letters. It's turned out quite
+    dully. Still thinking of any other variant such as «eXtra Set of Logs and
+    Crutches» or «eXtremally Shaggy Lulz Collection» or whatever.
+</p>
+<p>Help me, if you can.</p>
+            </elem:content>
+        </block:b-section>
+        <block:b-comments mod:js="yes" id="xslc/title" />
         <block:b-footer />
     </elem:content>
 

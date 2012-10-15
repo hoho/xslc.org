@@ -11,6 +11,9 @@
     <xsl:output method="html" />
 
 
+    <xsl:template match="@*" />
+
+
     <xsl:template match="@mod:*">
         <xsl:text> </xsl:text>
         <xsl:choose>
@@ -53,6 +56,21 @@
             <xsl:value-of select="local-name(.)" />
             <xsl:apply-templates select="@mod:*" />
         </xsl:attribute>
+    </xsl:template>
+
+
+    <xsl:template match="*|@*" mode="copy-content">
+        <xsl:choose>
+            <xsl:when test="namespace-uri() = 'http://xslc.org/BEM/Block'">
+                <xsl:apply-templates select="." />
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:copy>
+                    <xsl:apply-templates select="@*" mode="copy-content" />
+                    <xsl:apply-templates mode="copy-content" />
+                </xsl:copy>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 
 

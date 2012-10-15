@@ -21,6 +21,8 @@
                     <xsl:text>eXtra Space for Logs and Code</xsl:text>
                 </title>
                 <link rel="stylesheet" href="/cssjs/css.css" />
+                <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+                <script src="/cssjs/js.js"></script>
             </head>
             <body>
                 <xsl:apply-templates select="elem:content" />

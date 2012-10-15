@@ -12,7 +12,7 @@ def get_modifiers(node):
     return ret
 
 def get_dependencies(filename):
-    ret = ["i-common/i-common"]
+    ret = ["i-jquery/i-jquery__bem", "i-common/i-common"]
     namespaces = {"block": "http://xslc.org/BEM/Block",
                   "elem": "http://xslc.org/BEM/Element"}
     xml = etree.parse(filename)
@@ -76,18 +76,24 @@ def get_dependencies_dict(dir):
         ret[filename] = deps
     return ret
 
-def get_xsl_content(path, prefix, deps):
+class FileResolver(etree.Resolver):
+    def resolve(self, url, pubid, context):
+        return self.resolve_filename(url, context)
+
+def get_xsl_transform(path, deps):
     include = "<xsl:include href=\"%s\" />"
     filenames = []
     for dep in deps:
-        filename = os.path.join(path, "%s.xsl" % dep)
+        filename = os.path.normpath(os.path.join(path, "%s.xsl" % dep))
         if os.path.isfile(filename):
-            filenames.append(include % \
-                os.path.normpath(os.path.join(prefix, filename)))
-    return "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" \
+            filenames.append(include % filename)
+    parser = etree.XMLParser()
+    parser.resolvers.add(FileResolver())
+    xsl = etree.XML("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" \
         "<xsl:stylesheet xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\"" \
         " version=\"1.0\">\n    %s\n" \
-        "</xsl:stylesheet>" % "\n    ".join(filenames)
+        "</xsl:stylesheet>" % "\n    ".join(filenames), parser)
+    return etree.XSLT(xsl)
 
 def merge_dependencies(deps_dict):
     appended = {}
@@ -119,27 +125,20 @@ RET_PATH = argv[3]
 
 deps_dict = get_dependencies_dict(PAGES_PATH)
 for filename, deps in deps_dict.iteritems():
-    dir = os.path.normpath(os.path.join("./.build", os.path.dirname(filename)))
-    dir2 = os.path.normpath(os.path.join(RET_PATH, os.path.dirname(filename)))
-    levels = [".." for l in os.path.split(dir) if l]
+    dir = os.path.normpath(os.path.join(RET_PATH, os.path.dirname(filename)))
     try:
         os.makedirs(dir)
     except:
         pass
-    try:
-        os.makedirs(dir2)
-    except:
-        pass
-    genfilename = os.path.normpath(os.path.join("./.build", filename))[:-4]
-    xslfilename = "%s.xsl" % genfilename
     htmlfilename = \
         os.path.normpath(os.path.join(RET_PATH, "%s.html" % filename[:-4]))
     xmlfilename = os.path.normpath(os.path.join(PAGES_PATH, filename))
-    f = open(xslfilename, "w")
-    xslt = get_xsl_content(BLOCKS_PATH, "/".join(levels), deps)
-    f.write(xslt)
+    xslt = get_xsl_transform(BLOCKS_PATH, deps)
+    parser = etree.XMLParser(remove_blank_text=True)
+    xml = etree.parse(xmlfilename, parser)
+    f = open(htmlfilename, "w")
+    f.write(str(xslt(xml)))
     f.close()
-    os.system("xsltproc %s %s > %s" % (xslfilename, xmlfilename, htmlfilename))
 
 deps = merge_dependencies(deps_dict)
 cssjspath = os.path.normpath(os.path.join(RET_PATH, "cssjs"))
@@ -158,5 +157,5 @@ if css:
     f.close()
 if js:
     f = open(jsfilename, "w")
-    f.write(get_css_or_js_content(BLOCKS_PATH, deps, True))
+    f.write(js)
     f.close()

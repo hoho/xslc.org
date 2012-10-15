@@ -6,10 +6,23 @@
 
     <elem:content>
         <block:b-header />
-        <block:b-section mod:test="ghg">
-            <elem:fuck mod:ololo="pyc" />
+        <block:b-section>
+            <elem:content>
+                <block:b-stuff-item mod:js="yes" mod:type="jquery-bem" href="/jquery-bem/">
+                    <elem:title>jQuery BEM</elem:title>
+                    <elem:desc>Lightweight BEM plugin for jQuery</elem:desc>
+                </block:b-stuff-item>
+                <block:b-stuff-item mod:js="yes" mod:type="xrlt" href="http://xrlt.net/">
+                    <elem:title>XRLT Project</elem:title>
+                    <elem:desc>The way to build web-pages from server side</elem:desc>
+                </block:b-stuff-item>
+            </elem:content>
         </block:b-section>
-        <block:b-footer mod:index="yes" />
+        <block:b-section>
+            <elem:title>Blog</elem:title>
+            <elem:content>Blah blah blah.</elem:content>
+        </block:b-section>
+        <block:b-footer />
     </elem:content>
 
 </block:b-page>
