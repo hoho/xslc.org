@@ -1,0 +1,194 @@
+
+
+/* Begin of blocks/i-common/i-common.css. */
+@import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
+
+body
+{
+    color: #000;
+
+    font: 18px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+    font-weight: normal;
+
+    padding: 50px;
+}
+
+a
+{
+    color: #1e6280;
+
+    cursor: pointer;
+
+    font-weight: normal;
+
+    text-decoration: none;
+}
+
+table
+{
+    border-collapse: collapse;
+
+    width: 100%;
+}
+
+/* End of blocks/i-common/i-common.css. */
+
+
+
+
+/* Begin of blocks/b-page/b-page.css. */
+.b-page__content
+{
+    margin: 0 auto;
+
+    width: 860px;
+}
+
+/* End of blocks/b-page/b-page.css. */
+
+
+
+
+/* Begin of blocks/b-header/b-header.css. */
+.b-header h1
+{
+    color: #000;
+
+    font-size: 300%;
+
+    font-weight: normal;
+
+    line-height: 110%;
+
+    margin: 0 0 20px;
+}
+
+/* End of blocks/b-header/b-header.css. */
+
+
+
+
+/* Begin of blocks/b-section/b-section.css. */
+.b-section__title
+{
+    font-size: 150%;
+
+    font-weight: normal;
+
+    line-height: 110%;
+
+    margin: 0 0 20px;
+}
+
+/* End of blocks/b-section/b-section.css. */
+
+
+
+
+/* Begin of blocks/b-link/b-link.css. */
+.b-link
+{
+    font-family: Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal;
+
+    font-size: 90%;
+
+    margin: 0 2px;
+}
+
+/* End of blocks/b-link/b-link.css. */
+
+
+
+
+/* Begin of blocks/b-code/b-code.css. */
+.b-code
+{
+    font-family: Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal;
+
+    font-size: 90%;
+
+    margin: 0 2px;
+}
+
+/* End of blocks/b-code/b-code.css. */
+
+
+
+
+/* Begin of blocks/b-comments/b-comments.css. */
+.b-comments
+{
+    margin-top: 4em;
+}
+
+/* End of blocks/b-comments/b-comments.css. */
+
+
+
+
+/* Begin of blocks/b-footer/b-footer.css. */
+.b-footer
+{
+    margin-top: 4em;
+}
+
+.b-footer a
+{
+    font-size: 12px;
+}
+
+/* End of blocks/b-footer/b-footer.css. */
+
+
+
+
+/* Begin of blocks/b-stuff-item/b-stuff-item.css. */
+.b-stuff-item
+{
+    float: left;
+
+    margin: 2em 0 3em;
+
+    width: 49%;
+}
+
+.b-stuff-item__inner
+{
+    -webkit-box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.5);
+    -moz-box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.5);
+    box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.5);
+
+    margin: 1em auto;
+
+    padding: 20px 20px 25px;
+
+    width: 300px;
+}
+
+.b-stuff-item_js_inited .b-stuff-item__inner
+{
+    cursor: pointer;
+}
+
+.b-stuff-item_js_inited .b-stuff-item__inner:hover
+{
+    background: #fffcda;
+}
+
+.b-stuff-item__title
+{
+    font-size: 150%;
+
+    margin: 0;
+}
+
+.b-stuff-item__desc
+{
+    font-size: 85%;
+
+    margin: 0;
+}
+
+/* End of blocks/b-stuff-item/b-stuff-item.css. */
+
