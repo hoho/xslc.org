@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<block:b-page
+    xmlns:block="http://xslc.org/BEM/Block"
+    xmlns:elem="http://xslc.org/BEM/Element"
+    xmlns:mod="http://xslc.org/BEM/Modifier">
+
+    <elem:title>jQuery BEM</elem:title>
+    <elem:content>
+        <block:b-header>jQuery BEM</block:b-header>
+        <block:b-section>
+            <elem:title>What is BEM?</elem:title>
+            <elem:content>Pending.</elem:content>
+        </block:b-section>
+        <!--<block:b-comments mod:js="yes" id="jquery-bem" />-->
+        <block:b-footer />
+    </elem:content>
+
+</block:b-page>
