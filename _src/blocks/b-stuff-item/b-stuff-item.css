@@ -9,15 +9,26 @@
 
 .b-stuff-item__inner
 {
+    border: 1px solid #ddd;
+
     -webkit-box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.5);
     -moz-box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.5);
     box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.5);
 
-    margin: 1em auto;
+    margin: 20px auto;
 
     padding: 20px 20px 25px;
 
     width: 300px;
+}
+
+.b-stuff-item__inner_pressed_yes
+{
+    -webkit-box-shadow: 0px 0px 7px rgba(50, 50, 50, 0.5);
+    -moz-box-shadow: 0px 0px 7px rgba(50, 50, 50, 0.5);
+    box-shadow: 0px 0px 7px rgba(50, 50, 50, 0.5);
+
+    margin: 21px auto 19px;
 }
 
 .b-stuff-item_js_inited .b-stuff-item__inner

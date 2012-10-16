@@ -333,11 +333,15 @@ $.BEM.decl('b-comments')
 $.BEM.decl('b-stuff-item')
     .onMod('js',
         function($super, mod, val, prev) {
-            if (val === 'inited') {
-                var a = this.find('a');
-                a.click(function(e) { e.stopImmediatePropagation(); });
-                this.click(function() { window.location.href = a.attr('href'); });
-            }
+            if (val !== 'inited') { return; }
+
+            var a = this.find('a'),
+                inner = this.find('@b-stuff-item(inner)');
+            a.click(function(e) { e.stopImmediatePropagation(); });
+            inner
+                .click(function() { window.location.href = a.attr('href'); })
+                .mousedown(function() { inner.bemSetMod('pressed', 'yes'); })
+                .on('mouseup mouseleave', function() { inner.bemSetMod('pressed', ''); });
         });
 
 /* End of blocks/b-stuff-item/b-stuff-item.js. */
