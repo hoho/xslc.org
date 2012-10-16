@@ -9,6 +9,36 @@
         <block:b-header>jQuery BEM</block:b-header>
         <block:b-section>
             <elem:title>What is BEM?</elem:title>
+            <elem:content>
+                <block:b-paragraph>
+In short, Block-Element-Modifier (BEM) is a way to split project's markup,
+styles, scripts and images to small independent logical pieces. This helps to
+maintain, refactor and reuse these pieces in the long run.
+                </block:b-paragraph>
+
+                <block:b-paragraph>
+Read more at
+<block:b-link href="http://bem.info/">BEM's site</block:b-link>. You'll see
+descriptions and a large set of tools to create blocks and build pages there.
+                </block:b-paragraph>
+
+                <block:b-paragraph>
+<block:b-link mod:type="code" href="https://github.com/hoho/jquery-bem">jQuery BEM</block:b-link>
+plugin is an alternative implementation of just browser-side BEM runtime. This
+means that it's up to you how to build your pages, but if your markup
+corresponds to certain principals, you can use this plugin to find blocks and
+elements, change modifiers and react to modifiers changes in a BEM way. This
+site uses <block:b-code>jQuery BEM</block:b-code> and is being built with a
+simple Python script. Check
+<block:b-link href="https://github.com/hoho/xslc.org/blob/gh-pages/_src/pages/jquery-bem/index.xml">this page's source</block:b-link>
+and
+<block:b-link href="https://github.com/hoho/xslc.org/tree/gh-pages/_src/blocks">blocks' sources</block:b-link>.
+                </block:b-paragraph>
+            </elem:content>
+        </block:b-section>
+
+        <block:b-section>
+            <elem:title>Documentation Contents</elem:title>
             <elem:content>Pending.</elem:content>
         </block:b-section>
         <!--<block:b-comments mod:js="yes" id="jquery-bem" />-->

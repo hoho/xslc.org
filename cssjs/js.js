@@ -303,6 +303,9 @@ $.fn.bemSetMod = function(where, mod, val) {
 
 /* Begin of blocks/i-common/i-common.js. */
 $(function() {
+    // Find blocks with JavaScript enabled and set js=inited modifier (so,
+    // blocks could react to this modifier's change to initialize and
+    // deinitialize themselves.
     $('.js').bemSetMod('js', 'inited');
 });
 
@@ -315,13 +318,13 @@ $(function() {
 $.BEM.decl('b-comments')
     .onMod('js',
         function($super, mod, val, prev) {
-            if (val === 'inited') {
-                var dsq = document.createElement('script');
-                dsq.type = 'text/javascript';
-                dsq.async = true;
-                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-            }
+            if (val !== 'inited') { return; }
+
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         });
 
 /* End of blocks/b-comments/b-comments.js. */

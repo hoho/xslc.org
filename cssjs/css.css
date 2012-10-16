@@ -86,8 +86,31 @@ table
 
 
 
+/* Begin of blocks/b-paragraph/b-paragraph.css. */
+.b-paragraph
+{
+    margin: 0 0 1.5em;
+
+    padding: 0;
+}
+
+/* End of blocks/b-paragraph/b-paragraph.css. */
+
+
+
+
 /* Begin of blocks/b-link/b-link.css. */
 .b-link
+{
+}
+
+/* End of blocks/b-link/b-link.css. */
+
+
+
+
+/* Begin of blocks/b-link/b-link_type_code.css. */
+.b-link_type_code
 {
     font-family: Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal;
 
@@ -96,7 +119,7 @@ table
     margin: 0 2px;
 }
 
-/* End of blocks/b-link/b-link.css. */
+/* End of blocks/b-link/b-link_type_code.css. */
 
 
 
