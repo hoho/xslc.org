@@ -20,16 +20,16 @@ maintain, refactor and reuse these pieces in the long run.
 Read more at
 <block:b-link href="http://bem.info/">BEM's site</block:b-link>. You'll see
 descriptions and a large set of tools to create blocks and build pages there.
+And it'll probably be easier to understand the mess below.
                 </block:b-paragraph>
 
                 <block:b-paragraph>
-<block:b-link mod:type="code" href="https://github.com/hoho/jquery-bem">jQuery BEM</block:b-link>
-plugin is an alternative implementation of just browser-side BEM runtime. This
+<block:b-link href="https://github.com/hoho/jquery-bem">jQuery BEM</block:b-link>
+plugin is an alternative implementation of just client-side BEM runtime. This
 means that it's up to you how to build your pages, but if your markup
 corresponds to certain principals, you can use this plugin to find blocks and
-elements, change modifiers and react to modifiers changes in a BEM way. This
-site uses <block:b-code>jQuery BEM</block:b-code> and is being built with a
-simple Python script. Check
+elements, change modifiers and react to modifiers changes. This site uses
+jQuery BEM and is being built with a simple Python script. Check
 <block:b-link href="https://github.com/hoho/xslc.org/blob/gh-pages/_src/pages/jquery-bem/index.xml">this page's source</block:b-link>
 and
 <block:b-link href="https://github.com/hoho/xslc.org/tree/gh-pages/_src/blocks">blocks' sources</block:b-link>.
@@ -39,8 +39,91 @@ and
 
         <block:b-section>
             <elem:title>Documentation Contents</elem:title>
-            <elem:content>Pending.</elem:content>
+            <elem:content>
+                <block:b-contents>
+                    <elem:item href="#principles">Basic Principles</elem:item>
+                    <elem:item href="#find">Finding Blocks and Elements</elem:item>
+                    <elem:item href="#decl">JavaScript Declaration</elem:item>
+                    <elem:item href="#example">Example</elem:item>
+                </block:b-contents>
+            </elem:content>
         </block:b-section>
+
+        <block:b-section>
+            <elem:title anchor="principles">Basic Principles</elem:title>
+            <elem:content>
+                <block:b-paragraph>
+First of all, jQuery BEM plugin requires using a certain naming convention.
+jQuery BEM locates blocks and elements by analyzing class names of page's DOM
+nodes. So, correct class names are the key to success.
+                </block:b-paragraph>
+
+                <block:b-list>
+                    <elem:item>
+                        Block names should start with
+                        <block:b-code>b-</block:b-code> or
+                        <block:b-code>i-</block:b-code>.
+                    </elem:item>
+                    <elem:item>
+                        Block's, element's and modifier's name and modifier's
+                        value could only contain English letters, numbers and
+                        minus sign (<block:b-code>[a-zA-Z0-9-]</block:b-code>).
+                    </elem:item>
+                    <elem:item>
+                        Element's class name is block's name plus double
+                        underscore sign plus element's name
+                        (<block:b-code>b-block__elem</block:b-code>).
+                    </elem:item>
+                    <elem:item>
+                        Block's modifier looks like block's name plus
+                        underscore sign plus modifier's name plus underscore
+                        sign plus modifier's value
+                        (<block:b-code>b-block_mod_val</block:b-code>).
+                    </elem:item>
+                    <elem:item>
+                        Element's modifier looks like element's class name plus
+                        underscore sign plus modifier's name plus underscore
+                        sign plus modifier's value
+                        (<block:b-code>b-block__elem_mod_val</block:b-code>).
+                    </elem:item>
+                    <elem:item>
+Below is a block named <block:b-code>b-test</block:b-code>. This block has one
+modifier named <block:b-code>type</block:b-code> with
+<block:b-code>yo</block:b-code> value. There are two elements. First element is
+named <block:b-code>elem1</block:b-code>. Second element is named
+<block:b-code>elem2</block:b-code>. Second element has one modifier named
+<block:b-code>mood</block:b-code> with <block:b-code>happy</block:b-code> value.
+
+<block:b-code mod:pre="yes" mod:highlight="xml"><![CDATA[<div class="b-test b-test_type_yo">
+    <span class="b-test__elem1">element1</span>
+    <span class="b-test__elem2 b-test__elem2_mood_happy">element2</span>
+</div>]]></block:b-code>
+                    </elem:item>
+                </block:b-list>
+
+                <block:b-paragraph>
+Once again, it's up to you, how to get HTML. You can use any structures for
+your BEM-tree and any template engine to transform it to HTML. This site, for
+example, uses <block:b-code>XML</block:b-code> to store BEM-tree and
+<block:b-code>XSLT</block:b-code> to create HTML. jQuery BEM is about client-side
+only.
+                </block:b-paragraph>
+            </elem:content>
+        </block:b-section>
+
+        <block:b-section>
+            <elem:title anchor="find">Finding Blocks and Elements</elem:title>
+            <elem:content><block:b-paragraph>Pending.</block:b-paragraph></elem:content>
+        </block:b-section>
+        <block:b-section>
+            <elem:title anchor="decl">JavaScript Declaration</elem:title>
+            <elem:content><block:b-paragraph>Pending.</block:b-paragraph></elem:content>
+        </block:b-section>
+        <block:b-section>
+            <elem:title anchor="example">Example</elem:title>
+            <elem:content><block:b-paragraph>Pending.</block:b-paragraph></elem:content>
+        </block:b-section>
+
         <!--<block:b-comments mod:js="yes" id="jquery-bem" />-->
         <block:b-footer />
     </elem:content>

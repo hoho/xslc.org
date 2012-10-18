@@ -16,17 +16,81 @@ maintain, refactor and reuse these pieces in the long run.
 Read more at
 <a href="http://bem.info/" class="b-link">BEM's site</a>. You'll see
 descriptions and a large set of tools to create blocks and build pages there.
+And it'll probably be easier to understand the mess below.
                 </p>
-<p class="b-paragraph"><a href="https://github.com/hoho/jquery-bem" class="b-link b-link_type_code">jQuery BEM</a>
-plugin is an alternative implementation of just browser-side BEM runtime. This
+<p class="b-paragraph"><a href="https://github.com/hoho/jquery-bem" class="b-link">jQuery BEM</a>
+plugin is an alternative implementation of just client-side BEM runtime. This
 means that it's up to you how to build your pages, but if your markup
 corresponds to certain principals, you can use this plugin to find blocks and
-elements, change modifiers and react to modifiers changes in a BEM way. This
-site uses <code class="b-code">jQuery BEM</code> and is being built with a
-simple Python script. Check
+elements, change modifiers and react to modifiers changes. This site uses
+jQuery BEM and is being built with a simple Python script. Check
 <a href="https://github.com/hoho/xslc.org/blob/gh-pages/_src/pages/jquery-bem/index.xml" class="b-link">this page's source</a>
 and
 <a href="https://github.com/hoho/xslc.org/tree/gh-pages/_src/blocks" class="b-link">blocks' sources</a>.
-                </p></section><section class="b-section"><h3 class="b-section__title">Documentation Contents</h3>Pending.</section><footer class="b-footer"><a href="mailto:dakota@brokenpipe.ru">Marat Abdullin</a></footer>
+                </p></section><section class="b-section"><h3 class="b-section__title">Documentation Contents</h3>
+<ul class="b-contents">
+<li class="b-contents__item"><a href="#principles">Basic Principles</a></li>
+<li class="b-contents__item"><a href="#find">Finding Blocks and Elements</a></li>
+<li class="b-contents__item"><a href="#decl">JavaScript Declaration</a></li>
+<li class="b-contents__item"><a href="#example">Example</a></li>
+</ul></section><section class="b-section"><h3 id="principles" class="b-section__title">Basic Principles</h3>
+<p class="b-paragraph">
+First of all, jQuery BEM plugin requires using a certain naming convention.
+jQuery BEM locates blocks and elements by analyzing class names of page's DOM
+nodes. So, correct class names are the key to success.
+                </p>
+<ul class="b-list">
+<li class="b-list__item">
+                        Block names should start with
+                        <code class="b-code">b-</code> or
+                        <code class="b-code">i-</code>.
+                    </li>
+<li class="b-list__item">
+                        Block's, element's and modifier's name and modifier's
+                        value could only contain English letters, numbers and
+                        minus sign (<code class="b-code">[a-zA-Z0-9-]</code>).
+                    </li>
+<li class="b-list__item">
+                        Element's class name is block's name plus double
+                        underscore sign plus element's name
+                        (<code class="b-code">b-block__elem</code>).
+                    </li>
+<li class="b-list__item">
+                        Block's modifier looks like block's name plus
+                        underscore sign plus modifier's name plus underscore
+                        sign plus modifier's value
+                        (<code class="b-code">b-block_mod_val</code>).
+                    </li>
+<li class="b-list__item">
+                        Element's modifier looks like element's class name plus
+                        underscore sign plus modifier's name plus underscore
+                        sign plus modifier's value
+                        (<code class="b-code">b-block__elem_mod_val</code>).
+                    </li>
+<li class="b-list__item">
+Below is a block named <code class="b-code">b-test</code>. This block has one
+modifier named <code class="b-code">type</code> with
+<code class="b-code">yo</code> value. There are two elements. First element is
+named <code class="b-code">elem1</code>. Second element is named
+<code class="b-code">elem2</code>. Second element has one modifier named
+<code class="b-code">mood</code> with <code class="b-code">happy</code> value.
+
+<div class="b-code b-code_pre_yes b-code_highlight_xml"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"b-test b-test_type_yo"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"b-test__elem1"</span><span class="nt">&gt;</span>element1<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"b-test__elem2 b-test__elem2_mood_happy"</span><span class="nt">&gt;</span>element2<span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+                    </li>
+</ul>
+<p class="b-paragraph">
+Once again, it's up to you, how to get HTML. You can use any structures for
+your BEM-tree and any template engine to transform it to HTML. This site, for
+example, uses <code class="b-code">XML</code> to store BEM-tree and
+<code class="b-code">XSLT</code> to create HTML. jQuery BEM is about client-side
+only.
+                </p></section><section class="b-section"><h3 id="find" class="b-section__title">Finding Blocks and Elements</h3>
+<p class="b-paragraph">Pending.</p></section><section class="b-section"><h3 id="decl" class="b-section__title">JavaScript Declaration</h3>
+<p class="b-paragraph">Pending.</p></section><section class="b-section"><h3 id="example" class="b-section__title">Example</h3>
+<p class="b-paragraph">Pending.</p></section><footer class="b-footer"><a href="mailto:dakota@brokenpipe.ru">Marat Abdullin</a></footer>
 </div></body>
 </html>

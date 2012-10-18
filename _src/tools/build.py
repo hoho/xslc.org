@@ -3,6 +3,11 @@ from sys import argv
 from lxml import etree
 from copy import deepcopy
 
+from pygments import highlight
+from pygments.lexers import get_lexer_by_name
+from pygments.formatters import HtmlFormatter
+
+
 def get_modifiers(node):
     prefix = "{%s}" % "http://xslc.org/BEM/Modifier"
     ret = []
@@ -136,6 +141,30 @@ for filename, deps in deps_dict.iteritems():
     xslt = get_xsl_transform(BLOCKS_PATH, deps)
     parser = etree.XMLParser(remove_blank_text=True)
     xml = etree.parse(xmlfilename, parser)
+
+    code_blocks = xml.xpath(
+        "//block:b-code[@mod:highlight]",
+         namespaces={"block": "http://xslc.org/BEM/Block",
+                     "mod": "http://xslc.org/BEM/Modifier"}
+    )
+    for c in code_blocks:
+        lexer = get_lexer_by_name(
+            c.attrib["{http://xslc.org/BEM/Modifier}highlight"], stripall=True
+        )
+        mods = get_modifiers(c)
+        for i in xrange(len(mods)):
+            mods[i] = "b-code_%s_%s" % mods[i]
+        mods.insert(0, "b-code")
+        cssclass = " ".join(mods)
+        nowrap = c.attrib.get("{http://xslc.org/BEM/Modifier}pre") != "yes"
+        formatter = HtmlFormatter(linenos=False, nowrap=nowrap,
+                                  cssclass=cssclass)
+        new_text = highlight(c.text, lexer, formatter)
+        if nowrap:
+            new_text = "<code class=\"%s\">%s</code>" % (cssclass, new_text)
+        c.text = None
+        c.append(etree.XML(new_text))
+
     f = open(htmlfilename, "w")
     f.write(str(xslt(xml)))
     f.close()

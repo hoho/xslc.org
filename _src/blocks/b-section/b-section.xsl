@@ -19,6 +19,9 @@
 
     <xsl:template match="block:b-section/elem:title">
         <h3>
+            <xsl:if test="@anchor">
+                <xsl:attribute name="id"><xsl:value-of select="@anchor" /></xsl:attribute>
+            </xsl:if>
             <xsl:call-template name="elem:class" />
             <xsl:apply-templates mode="copy-content" />
         </h3>
