@@ -13,7 +13,8 @@
                 <block:b-paragraph>
 In short, Block-Element-Modifier (BEM) is a way to split project's markup,
 styles, scripts and images to small independent logical pieces. This helps to
-maintain, refactor and reuse these pieces in the long run.
+maintain, refactor and reuse these pieces in the long run (you describe page in
+terms of logical entities, not in terms of HTML elements).
                 </block:b-paragraph>
 
                 <block:b-paragraph>
@@ -67,7 +68,7 @@ nodes. So, correct class names are the key to success.
                     <elem:item>
                         Block's, element's and modifier's name and modifier's
                         value could only contain English letters, numbers and
-                        minus sign (<block:b-code>[a-zA-Z0-9-]</block:b-code>).
+                        minus sign (<block:b-code>[a-zA-Z0-9-]+</block:b-code>).
                     </elem:item>
                     <elem:item>
                         Element's class name is block's name plus double
@@ -104,9 +105,11 @@ named <block:b-code>elem1</block:b-code>. Second element is named
                 <block:b-paragraph>
 Once again, it's up to you, how to get HTML. You can use any structures for
 your BEM-tree and any template engine to transform it to HTML. This site, for
-example, uses <block:b-code>XML</block:b-code> to store BEM-tree and
-<block:b-code>XSLT</block:b-code> to create HTML. jQuery BEM is about client-side
-only.
+example, uses
+<block:b-link href="http://en.wikipedia.org/wiki/XML">XML</block:b-link> to
+store BEM-tree and
+<block:b-link href="http://en.wikipedia.org/wiki/XSLT">XSLT</block:b-link> to
+create HTML.
                 </block:b-paragraph>
             </elem:content>
         </block:b-section>
