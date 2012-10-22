@@ -1,0 +1,9 @@
+.b-text_nowrap_yes
+{
+    white-space: nowrap;
+}
+
+.b-text_em_yes
+{
+    font-style: italic;
+}

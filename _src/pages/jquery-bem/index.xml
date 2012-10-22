@@ -8,6 +8,16 @@
     <elem:content>
         <block:b-header>jQuery BEM</block:b-header>
         <block:b-section>
+            <elem:title>Disclaimer</elem:title>
+            <elem:content>
+                <block:b-paragraph>
+                    This documentation looks like a nightmare. But it's better
+                    than nothing. Someday it will improve.
+                </block:b-paragraph>
+            </elem:content>
+        </block:b-section>
+
+        <block:b-section>
             <elem:title>What is BEM?</elem:title>
             <elem:content>
                 <block:b-paragraph>
@@ -95,7 +105,8 @@ named <block:b-code>elem1</block:b-code>. Second element is named
 <block:b-code>elem2</block:b-code>. Second element has one modifier named
 <block:b-code>mood</block:b-code> with <block:b-code>happy</block:b-code> value.
 
-<block:b-code mod:pre="yes" mod:highlight="xml"><![CDATA[<div class="b-test b-test_type_yo">
+<block:b-code mod:pre="yes" mod:highlight="xml"><![CDATA[
+<div class="b-test b-test_type_yo">
     <span class="b-test__elem1">element1</span>
     <span class="b-test__elem2 b-test__elem2_mood_happy">element2</span>
 </div>]]></block:b-code>
@@ -116,11 +127,309 @@ create HTML.
 
         <block:b-section>
             <elem:title anchor="find">Finding Blocks and Elements</elem:title>
-            <elem:content><block:b-paragraph>Pending.</block:b-paragraph></elem:content>
+            <elem:content>
+                <block:b-paragraph>
+Finding blocks with jQuery BEM is as easy as finding DOM nodes with jQuery —
+just use <block:b-link href="http://api.jquery.com/category/selectors/">CSS
+selectors</block:b-link> and
+<block:b-link href="http://api.jquery.com/category/traversing/">traversing
+functions</block:b-link>.
+                </block:b-paragraph>
+
+                <block:b-paragraph>
+                    jQuery BEM adds new kinds of selectors to find blocks and
+                    elements.
+                </block:b-paragraph>
+
+                <block:b-list>
+                    <elem:item>
+                        <block:b-code>@b-block</block:b-code> selects all
+                        blocks with the given name.
+                    </elem:item>
+                    <elem:item>
+                        <block:b-code>@b-block(elem)</block:b-code> selects
+                        all elements with the given name of all blocks with the
+                        given name.
+                    </elem:item>
+                    <elem:item>
+                        <block:b-code>{mod}</block:b-code> selects blocks and
+                        elements that have the specified modifier.
+                    </elem:item>
+                    <elem:item>
+                        <block:b-code>{mod=val}</block:b-code>
+                        selects blocks and elements that have the specified
+                        modifier with a value exactly equal to a certain value.
+                    </elem:item>
+                    <elem:item>
+                        <block:b-code>{mod|=val}</block:b-code>
+                        selects blocks and elements that have the specified
+                        modifier with a value either equal to a given string or
+                        starting with that string followed by a hyphen (-).
+                    </elem:item>
+                    <elem:item>
+                        <block:b-code>{mod*=val}</block:b-code>
+                        selects blocks and elements that have the specified
+                        modifier with a value containing the a given substring.
+                    </elem:item>
+                    <elem:item>
+                        <block:b-code>{mod$=val}</block:b-code>
+                        selects blocks and elements that have the specified
+                        modifier with a value ending exactly with a given
+                        string. The comparison is case sensitive.
+                    </elem:item>
+                    <elem:item>
+                        <block:b-code>{mod!=val}</block:b-code>
+                        select blocks and elements that either don't have the
+                        specified modifier, or do have the specified modifier
+                        but not with a certain value.
+                    </elem:item>
+                    <elem:item>
+                        <block:b-code>{mod^=val}</block:b-code>
+                        selects blocks and elements that have the specified
+                        modifier with a value beginning exactly with a given
+                        string.
+                    </elem:item>
+                </block:b-list>
+
+                <block:b-paragraph>
+                    These selectors could be used among all other jQuery
+                    selectors.
+                </block:b-paragraph>
+
+                <block:b-code mod:highlight="javascript" mod:pre="yes"><![CDATA[
+// Find all blocks named b-test.
+$('@b-test');
+
+// Find all blocks named b-test that have the specified modifier.
+$('@b-test{cool=yes}');
+
+// Find all elements named elem1 of blocks named b-test that have the specified
+// modifier.
+$('@b-test(elem1){cool=yes}');
+
+// Just another example.
+$('div @b-test span[id="123"] @b-test2[value="yo"]{test=yes}{ok=no}');
+
+// And yet another one.
+$('@b-button').closest('@b-form{active=yes}');
+                ]]></block:b-code>
+            </elem:content>
         </block:b-section>
+
+        <block:b-section>
+            <elem:title anchor="decl">Setting Modifiers and Calling Methods</elem:title>
+            <elem:content>
+                <block:b-paragraph>
+jQuery BEM extends
+<block:b-link href="http://api.jquery.com/Types/#jQuery">jQuery
+object</block:b-link> with two methods:
+<block:b-code>.bemSetMod()</block:b-code> and
+<block:b-code>.bemCall()</block:b-code>.
+                </block:b-paragraph>
+
+                <block:b-list>
+                    <elem:item>
+<block:b-code mod:highlight="javascript">.bemSetMod('mod', 'val')</block:b-code>
+— set modifier <block:b-text mod:em="yes">mod</block:b-text> to
+<block:b-text mod:em="yes">val</block:b-text> for each block or element from
+the set of matched DOM elements.
+                    </elem:item>
+                    <elem:item>
+<block:b-code mod:highlight="javascript">.bemSetMod('b-block', 'mod', 'val')</block:b-code>
+<br />or<br />
+<block:b-code mod:highlight="javascript">.bemSetMod({block: 'b-block'}, 'mod', 'val')</block:b-code>
+— set modifier <block:b-text mod:em="yes">mod</block:b-text> to
+<block:b-text mod:em="yes">val</block:b-text> for each block with
+<block:b-text mod:nowrap="yes" mod:em="yes">b-block</block:b-text> name from
+the set of matched DOM elements.
+                    </elem:item>
+                    <elem:item>
+<block:b-code mod:highlight="javascript">.bemSetMod({block: 'b-block', elem: 'elem1'}, 'mod', 'val')</block:b-code>
+— set modifier <block:b-text mod:em="yes">mod</block:b-text> to
+<block:b-text mod:em="yes">val</block:b-text> for each element named
+<block:b-text mod:em="yes">elem1</block:b-text> that belong to block named
+<block:b-text mod:nowrap="yes" mod:em="yes">b-block</block:b-text> from the set
+of matched DOM elements.
+                    </elem:item>
+                    <elem:item>
+<block:b-code mod:highlight="javascript">.bemCall('meth')</block:b-code>
+<br />or<br />
+<block:b-code mod:highlight="javascript">.bemCall({method: 'meth'})</block:b-code>
+— call method named <block:b-text mod:em="yes">meth</block:b-text> of each
+block or element from the set of matched DOM elements.
+                    </elem:item>
+                    <elem:item>
+<block:b-code mod:highlight="javascript">.bemCall({method: 'meth', block: 'b-block'})</block:b-code>
+— call method named <block:b-text mod:em="yes">meth</block:b-text> of each
+block named <block:b-text mod:em="yes">b-block</block:b-text> from the set of
+matched DOM elements.
+                    </elem:item>
+                    <elem:item>
+<block:b-code mod:highlight="javascript">.bemCall({method: 'meth', block: 'b-block', elem: 'elem1'})</block:b-code>
+— call method named <block:b-text mod:em="yes">meth</block:b-text> of each
+element named <block:b-text mod:em="yes">elem1</block:b-text> that belong to
+block named <block:b-text mod:nowrap="yes" mod:em="yes">b-block</block:b-text>
+from the set of matched DOM elements.
+                    </elem:item>
+                </block:b-list>
+
+                <block:b-paragraph>
+                    Here is an example. Let initial DOM looks like below:
+                </block:b-paragraph>
+
+                <block:b-code mod:highlight="html" mod:pre="yes"><![CDATA[
+...
+<body>
+    <div class="b-block1">first block</div>
+    <div class="b-block2 b-block3">two blocks on the same node</div>
+    <div class="b-block4">
+        <div class="b-block4__elem1">first element</div>
+        <div class="b-block4__elem2">second element</div>
+    </div>
+</body>
+...]]></block:b-code>
+
+                <block:b-paragraph>
+                    If we execute JavaScript code below:
+                </block:b-paragraph>
+
+                <block:b-code mod:highlight="javascript" mod:pre="yes"><![CDATA[
+$('*') // Select all DOM elements.
+    .bemSetMod('mod1', 'val1')
+    .bemSetMod('b-block2', 'mod2', 'val2')
+    .bemSetMod({block: 'b-block4', elem: 'elem2'}, 'mod3', 'val3');
+                ]]></block:b-code>
+
+                <block:b-paragraph>
+                    The result will be (class names are wrapped for
+                    readability):
+                </block:b-paragraph>
+
+                <block:b-code mod:highlight="html" mod:pre="yes"><![CDATA[
+...
+<body>
+    <div class="b-block1
+                b-block1_mod1_val1">first block</div>
+    <div class="b-block2
+                b-block2_mod1_val1
+                b-block2_mod2_val2
+                b-block3
+                b-block3_mod1_val1">two blocks on the same node</div>
+    <div class="b-block4
+                b-block4_mod1_val1">
+        <div class="b-block4__elem1
+                    b-block4__elem1_mod1_val1">first element</div>
+        <div class="b-block4__elem2
+                    b-block4__elem2_mod1_val1
+                    b-block4__elem2_mod3_val3">second element</div>
+    </div>
+</body>
+...
+                ]]></block:b-code>
+            </elem:content>
+        </block:b-section>
+
         <block:b-section>
             <elem:title anchor="decl">JavaScript Declaration</elem:title>
-            <elem:content><block:b-paragraph>Pending.</block:b-paragraph></elem:content>
+            <elem:content>
+                <block:b-paragraph>
+There are two kinds of actions jQuery BEM blocks and elements support:
+<block:b-text mod:em="yes">modifier change</block:b-text> and
+<block:b-text mod:em="yes">method call</block:b-text>. When modifier is being
+changed or method is being called, jQuery BEM matches declared callbacks
+against current document state and creates a list of matched callbacks (sorted
+by order of declaration, from the last to first) and calls first callback
+from this list. Below is the example of how to declare actions on blocks and
+elements:
+                </block:b-paragraph>
+
+                <block:b-code mod:highlight="javascript" mod:pre="yes"><![CDATA[
+// Declaration of actions for block b-test.
+$.BEM.decl('b-test')
+    // Callback below will be called in case of changing mod1 modifier of
+    // b-test block.
+    .onMod('mod1', function($super, mod, val, prev) { console.log(1); })
+    .onMod('mod2', function($super, mod, val, prev) { console.log(2); })
+    .elem('elem1')
+        .onMod('emod1', function($super, mod, val, prev) { console.log(11); })
+        // Callback below will be called in case of changing emod2 modifier of
+        // b-test block's elem1 element.
+        .onMod('emod2', function($super, mod, val, prev) { console.log(22); })
+        .end()
+    .onMod('mod3', function($super, mod, val, prev) { console.log(3); })
+    // Callback below will be called when method1 method of b-test block is
+    // called.
+    .onMethod('method1', function($super, p1, p2) { return p1 + p2; })
+    .elem('elem2', 'emod3', 'yes')
+        .onMod('emod3', function($super, mod, val, prev) { console.log(33); })
+        .onMethod('emethod1', function($super, p1, p2) { return 123; });
+
+// Declaration of actions for block b-test with testmod modifier.
+$.BEM.decl('b-test', 'testmod')
+    // Callbacks below will appear in list of matched callbacks only for b-test
+    // blocks with testmod modifier set.
+    .onMod('mod1',
+        function($super, mod, val, prev) {
+            console.log('boo');
+            // Call earlier declared callback.
+            $super(mod, val, prev);
+        })
+    .onMethod('method1',
+        function($super, p1, p2) {
+            // Return some string plus earlier declared callback's result.
+            return 'value is: ' + $super(p1, p2);
+        });
+
+// Declaration of actions for block b-test with testmod=yes modifier.
+$.BEM.decl('b-test', 'testmod', 'yes')
+    // Callback below will appear in list of matched callbacks only for b-test
+    // blocks with testmod modifier set to yes.
+    .onMod('mod1',
+        function($super, mod, val, prev) {
+            // Call earlier declared callback.
+            $super(mod, val, prev);
+            console.log('moo');
+        });
+                ]]></block:b-code>
+
+                <block:b-paragraph>
+                    Suppose, we have DOM like below:
+                </block:b-paragraph>
+
+                <block:b-code mod:highlight="html" mod:pre="yes"><![CDATA[
+...
+<body>
+    <div class="b-test">1</div>
+    <div class="b-test b-test_testmod_no">2</div>
+    <div class="b-test b-test_testmod_yes">3</div>
+</body>
+...
+                ]]></block:b-code>
+
+                <block:b-paragraph>
+                    And we call:
+                </block:b-paragraph>
+
+                <block:b-code mod:highlight="javascript" mod:pre="yes"><![CDATA[
+> $('@b-test').eq(0).bemSetMod('mod1', 'bla'); // First b-test.
+1
+
+> $('@b-test').eq(1).bemSetMod('mod1', 'bla'); // Second b-test.
+boo
+1
+
+> $('@b-test').eq(2).bemSetMod('mod1', 'bla'); // Third b-test.
+boo
+1
+moo
+
+> console.log($('@b-test').eq(0).bemCall('method1', 1, 2)); // First b-test.
+3
+
+> console.log($('@b-test').eq(1).bemCall('method1', 1, 2)); // Second b-test.
+value is: 3
+                ]]></block:b-code>
+            </elem:content>
         </block:b-section>
         <block:b-section>
             <elem:title anchor="example">Example</elem:title>

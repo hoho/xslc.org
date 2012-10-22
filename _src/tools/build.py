@@ -159,7 +159,7 @@ for filename, deps in deps_dict.iteritems():
         nowrap = c.attrib.get("{http://xslc.org/BEM/Modifier}pre") != "yes"
         formatter = HtmlFormatter(linenos=False, nowrap=nowrap,
                                   cssclass=cssclass)
-        new_text = highlight(c.text, lexer, formatter)
+        new_text = highlight(c.text, lexer, formatter).strip(" \n\r\t")
         if nowrap:
             new_text = "<code class=\"%s\">%s</code>" % (cssclass, new_text)
         c.text = None

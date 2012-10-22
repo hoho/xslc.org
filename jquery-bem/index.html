@@ -6,7 +6,11 @@
 <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script><script src="/cssjs/js.js"></script>
 </head>
 <body><div class="b-page__content">
-<header class="b-header"><h1>jQuery BEM</h1></header><section class="b-section"><h3 class="b-section__title">What is BEM?</h3>
+<header class="b-header"><h1>jQuery BEM</h1></header><section class="b-section"><h3 class="b-section__title">Disclaimer</h3>
+<p class="b-paragraph">
+                    This documentation looks like a nightmare. But it's better
+                    than nothing. Someday it will improve.
+                </p></section><section class="b-section"><h3 class="b-section__title">What is BEM?</h3>
 <p class="b-paragraph">
 In short, Block-Element-Modifier (BEM) is a way to split project's markup,
 styles, scripts and images to small independent logical pieces. This helps to
@@ -92,8 +96,269 @@ store BEM-tree and
 <a href="http://en.wikipedia.org/wiki/XSLT" class="b-link">XSLT</a> to
 create HTML.
                 </p></section><section class="b-section"><h3 id="find" class="b-section__title">Finding Blocks and Elements</h3>
-<p class="b-paragraph">Pending.</p></section><section class="b-section"><h3 id="decl" class="b-section__title">JavaScript Declaration</h3>
-<p class="b-paragraph">Pending.</p></section><section class="b-section"><h3 id="example" class="b-section__title">Example</h3>
+<p class="b-paragraph">
+Finding blocks with jQuery BEM is as easy as finding DOM nodes with jQuery —
+just use <a href="http://api.jquery.com/category/selectors/" class="b-link">CSS
+selectors</a> and
+<a href="http://api.jquery.com/category/traversing/" class="b-link">traversing
+functions</a>.
+                </p>
+<p class="b-paragraph">
+                    jQuery BEM adds new kinds of selectors to find blocks and
+                    elements.
+                </p>
+<ul class="b-list">
+<li class="b-list__item">
+<code class="b-code">@b-block</code> selects all
+                        blocks with the given name.
+                    </li>
+<li class="b-list__item">
+<code class="b-code">@b-block(elem)</code> selects
+                        all elements with the given name of all blocks with the
+                        given name.
+                    </li>
+<li class="b-list__item">
+<code class="b-code">{mod}</code> selects blocks and
+                        elements that have the specified modifier.
+                    </li>
+<li class="b-list__item">
+<code class="b-code">{mod=val}</code>
+                        selects blocks and elements that have the specified
+                        modifier with a value exactly equal to a certain value.
+                    </li>
+<li class="b-list__item">
+<code class="b-code">{mod|=val}</code>
+                        selects blocks and elements that have the specified
+                        modifier with a value either equal to a given string or
+                        starting with that string followed by a hyphen (-).
+                    </li>
+<li class="b-list__item">
+<code class="b-code">{mod*=val}</code>
+                        selects blocks and elements that have the specified
+                        modifier with a value containing the a given substring.
+                    </li>
+<li class="b-list__item">
+<code class="b-code">{mod$=val}</code>
+                        selects blocks and elements that have the specified
+                        modifier with a value ending exactly with a given
+                        string. The comparison is case sensitive.
+                    </li>
+<li class="b-list__item">
+<code class="b-code">{mod!=val}</code>
+                        select blocks and elements that either don't have the
+                        specified modifier, or do have the specified modifier
+                        but not with a certain value.
+                    </li>
+<li class="b-list__item">
+<code class="b-code">{mod^=val}</code>
+                        selects blocks and elements that have the specified
+                        modifier with a value beginning exactly with a given
+                        string.
+                    </li>
+</ul>
+<p class="b-paragraph">
+                    These selectors could be used among all other jQuery
+                    selectors.
+                </p>
+<div class="b-code b-code_highlight_javascript b-code_pre_yes"><pre><span class="c1">// Find all blocks named b-test.</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'@b-test'</span><span class="p">);</span>
+
+<span class="c1">// Find all blocks named b-test that have the specified modifier.</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'@b-test{cool=yes}'</span><span class="p">);</span>
+
+<span class="c1">// Find all elements named elem1 of blocks named b-test that have the specified</span>
+<span class="c1">// modifier.</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'@b-test(elem1){cool=yes}'</span><span class="p">);</span>
+
+<span class="c1">// Just another example.</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'div @b-test span[id="123"] @b-test2[value="yo"]{test=yes}{ok=no}'</span><span class="p">);</span>
+
+<span class="c1">// And yet another one.</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'@b-button'</span><span class="p">).</span><span class="nx">closest</span><span class="p">(</span><span class="s1">'@b-form{active=yes}'</span><span class="p">);</span>
+</pre></div></section><section class="b-section"><h3 id="decl" class="b-section__title">Setting Modifiers and Calling Methods</h3>
+<p class="b-paragraph">
+jQuery BEM extends
+<a href="http://api.jquery.com/Types/#jQuery" class="b-link">jQuery
+object</a> with two methods:
+<code class="b-code">.bemSetMod()</code> and
+<code class="b-code">.bemCall()</code>.
+                </p>
+<ul class="b-list">
+<li class="b-list__item">
+<code class="b-code b-code_highlight_javascript"><span class="p">.</span><span class="nx">bemSetMod</span><span class="p">(</span><span class="s1">'mod'</span><span class="p">,</span> <span class="s1">'val'</span><span class="p">)</span></code>
+— set modifier <span class="b-text b-text_em_yes">mod</span> to
+<span class="b-text b-text_em_yes">val</span> for each block or element from
+the set of matched DOM elements.
+                    </li>
+<li class="b-list__item">
+<code class="b-code b-code_highlight_javascript"><span class="p">.</span><span class="nx">bemSetMod</span><span class="p">(</span><span class="s1">'b-block'</span><span class="p">,</span> <span class="s1">'mod'</span><span class="p">,</span> <span class="s1">'val'</span><span class="p">)</span></code><br>or<br><code class="b-code b-code_highlight_javascript"><span class="p">.</span><span class="nx">bemSetMod</span><span class="p">({</span><span class="nx">block</span><span class="o">:</span> <span class="s1">'b-block'</span><span class="p">},</span> <span class="s1">'mod'</span><span class="p">,</span> <span class="s1">'val'</span><span class="p">)</span></code>
+— set modifier <span class="b-text b-text_em_yes">mod</span> to
+<span class="b-text b-text_em_yes">val</span> for each block with
+<span class="b-text b-text_nowrap_yes b-text_em_yes">b-block</span> name from
+the set of matched DOM elements.
+                    </li>
+<li class="b-list__item">
+<code class="b-code b-code_highlight_javascript"><span class="p">.</span><span class="nx">bemSetMod</span><span class="p">({</span><span class="nx">block</span><span class="o">:</span> <span class="s1">'b-block'</span><span class="p">,</span> <span class="nx">elem</span><span class="o">:</span> <span class="s1">'elem1'</span><span class="p">},</span> <span class="s1">'mod'</span><span class="p">,</span> <span class="s1">'val'</span><span class="p">)</span></code>
+— set modifier <span class="b-text b-text_em_yes">mod</span> to
+<span class="b-text b-text_em_yes">val</span> for each element named
+<span class="b-text b-text_em_yes">elem1</span> that belong to block named
+<span class="b-text b-text_nowrap_yes b-text_em_yes">b-block</span> from the set
+of matched DOM elements.
+                    </li>
+<li class="b-list__item">
+<code class="b-code b-code_highlight_javascript"><span class="p">.</span><span class="nx">bemCall</span><span class="p">(</span><span class="s1">'meth'</span><span class="p">)</span></code><br>or<br><code class="b-code b-code_highlight_javascript"><span class="p">.</span><span class="nx">bemCall</span><span class="p">({</span><span class="nx">method</span><span class="o">:</span> <span class="s1">'meth'</span><span class="p">})</span></code>
+— call method named <span class="b-text b-text_em_yes">meth</span> of each
+block or element from the set of matched DOM elements.
+                    </li>
+<li class="b-list__item">
+<code class="b-code b-code_highlight_javascript"><span class="p">.</span><span class="nx">bemCall</span><span class="p">({</span><span class="nx">method</span><span class="o">:</span> <span class="s1">'meth'</span><span class="p">,</span> <span class="nx">block</span><span class="o">:</span> <span class="s1">'b-block'</span><span class="p">})</span></code>
+— call method named <span class="b-text b-text_em_yes">meth</span> of each
+block named <span class="b-text b-text_em_yes">b-block</span> from the set of
+matched DOM elements.
+                    </li>
+<li class="b-list__item">
+<code class="b-code b-code_highlight_javascript"><span class="p">.</span><span class="nx">bemCall</span><span class="p">({</span><span class="nx">method</span><span class="o">:</span> <span class="s1">'meth'</span><span class="p">,</span> <span class="nx">block</span><span class="o">:</span> <span class="s1">'b-block'</span><span class="p">,</span> <span class="nx">elem</span><span class="o">:</span> <span class="s1">'elem1'</span><span class="p">})</span></code>
+— call method named <span class="b-text b-text_em_yes">meth</span> of each
+element named <span class="b-text b-text_em_yes">elem1</span> that belong to
+block named <span class="b-text b-text_nowrap_yes b-text_em_yes">b-block</span>
+from the set of matched DOM elements.
+                    </li>
+</ul>
+<p class="b-paragraph">
+                    Here is an example. Let initial DOM looks like below:
+                </p>
+<div class="b-code b-code_highlight_html b-code_pre_yes"><pre>...
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"b-block1"</span><span class="nt">&gt;</span>first block<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"b-block2 b-block3"</span><span class="nt">&gt;</span>two blocks on the same node<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"b-block4"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"b-block4__elem1"</span><span class="nt">&gt;</span>first element<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"b-block4__elem2"</span><span class="nt">&gt;</span>second element<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+...
+</pre></div>
+<p class="b-paragraph">
+                    If we execute JavaScript code below:
+                </p>
+<div class="b-code b-code_highlight_javascript b-code_pre_yes"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'*'</span><span class="p">)</span> <span class="c1">// Select all DOM elements.</span>
+    <span class="p">.</span><span class="nx">bemSetMod</span><span class="p">(</span><span class="s1">'mod1'</span><span class="p">,</span> <span class="s1">'val1'</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">bemSetMod</span><span class="p">(</span><span class="s1">'b-block2'</span><span class="p">,</span> <span class="s1">'mod2'</span><span class="p">,</span> <span class="s1">'val2'</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">bemSetMod</span><span class="p">({</span><span class="nx">block</span><span class="o">:</span> <span class="s1">'b-block4'</span><span class="p">,</span> <span class="nx">elem</span><span class="o">:</span> <span class="s1">'elem2'</span><span class="p">},</span> <span class="s1">'mod3'</span><span class="p">,</span> <span class="s1">'val3'</span><span class="p">);</span>
+</pre></div>
+<p class="b-paragraph">
+                    The result will be (class names are wrapped for
+                    readability):
+                </p>
+<div class="b-code b-code_highlight_html b-code_pre_yes"><pre>...
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"b-block1</span>
+<span class="s">                b-block1_mod1_val1"</span><span class="nt">&gt;</span>first block<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"b-block2</span>
+<span class="s">                b-block2_mod1_val1</span>
+<span class="s">                b-block2_mod2_val2</span>
+<span class="s">                b-block3</span>
+<span class="s">                b-block3_mod1_val1"</span><span class="nt">&gt;</span>two blocks on the same node<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"b-block4</span>
+<span class="s">                b-block4_mod1_val1"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"b-block4__elem1</span>
+<span class="s">                    b-block4__elem1_mod1_val1"</span><span class="nt">&gt;</span>first element<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"b-block4__elem2</span>
+<span class="s">                    b-block4__elem2_mod1_val1</span>
+<span class="s">                    b-block4__elem2_mod3_val3"</span><span class="nt">&gt;</span>second element<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+...
+</pre></div></section><section class="b-section"><h3 id="decl" class="b-section__title">JavaScript Declaration</h3>
+<p class="b-paragraph">
+There are two kinds of actions jQuery BEM blocks and elements support:
+<span class="b-text b-text_em_yes">modifier change</span> and
+<span class="b-text b-text_em_yes">method call</span>. When modifier is being
+changed or method is being called, jQuery BEM matches declared callbacks
+against current document state and creates a list of matched callbacks (sorted
+by order of declaration, from the last to first) and calls first callback
+from this list. Below is the example of how to declare actions on blocks and
+elements:
+                </p>
+<div class="b-code b-code_highlight_javascript b-code_pre_yes"><pre><span class="c1">// Declaration of actions for block b-test.</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">BEM</span><span class="p">.</span><span class="nx">decl</span><span class="p">(</span><span class="s1">'b-test'</span><span class="p">)</span>
+    <span class="c1">// Callback below will be called in case of changing mod1 modifier of</span>
+    <span class="c1">// b-test block.</span>
+    <span class="p">.</span><span class="nx">onMod</span><span class="p">(</span><span class="s1">'mod1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$super</span><span class="p">,</span> <span class="nx">mod</span><span class="p">,</span> <span class="nx">val</span><span class="p">,</span> <span class="nx">prev</span><span class="p">)</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="p">})</span>
+    <span class="p">.</span><span class="nx">onMod</span><span class="p">(</span><span class="s1">'mod2'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$super</span><span class="p">,</span> <span class="nx">mod</span><span class="p">,</span> <span class="nx">val</span><span class="p">,</span> <span class="nx">prev</span><span class="p">)</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="p">})</span>
+    <span class="p">.</span><span class="nx">elem</span><span class="p">(</span><span class="s1">'elem1'</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">onMod</span><span class="p">(</span><span class="s1">'emod1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$super</span><span class="p">,</span> <span class="nx">mod</span><span class="p">,</span> <span class="nx">val</span><span class="p">,</span> <span class="nx">prev</span><span class="p">)</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">11</span><span class="p">);</span> <span class="p">})</span>
+        <span class="c1">// Callback below will be called in case of changing emod2 modifier of</span>
+        <span class="c1">// b-test block's elem1 element.</span>
+        <span class="p">.</span><span class="nx">onMod</span><span class="p">(</span><span class="s1">'emod2'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$super</span><span class="p">,</span> <span class="nx">mod</span><span class="p">,</span> <span class="nx">val</span><span class="p">,</span> <span class="nx">prev</span><span class="p">)</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">22</span><span class="p">);</span> <span class="p">})</span>
+        <span class="p">.</span><span class="nx">end</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">onMod</span><span class="p">(</span><span class="s1">'mod3'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$super</span><span class="p">,</span> <span class="nx">mod</span><span class="p">,</span> <span class="nx">val</span><span class="p">,</span> <span class="nx">prev</span><span class="p">)</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span> <span class="p">})</span>
+    <span class="c1">// Callback below will be called when method1 method of b-test block is</span>
+    <span class="c1">// called.</span>
+    <span class="p">.</span><span class="nx">onMethod</span><span class="p">(</span><span class="s1">'method1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$super</span><span class="p">,</span> <span class="nx">p1</span><span class="p">,</span> <span class="nx">p2</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">p1</span> <span class="o">+</span> <span class="nx">p2</span><span class="p">;</span> <span class="p">})</span>
+    <span class="p">.</span><span class="nx">elem</span><span class="p">(</span><span class="s1">'elem2'</span><span class="p">,</span> <span class="s1">'emod3'</span><span class="p">,</span> <span class="s1">'yes'</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">onMod</span><span class="p">(</span><span class="s1">'emod3'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$super</span><span class="p">,</span> <span class="nx">mod</span><span class="p">,</span> <span class="nx">val</span><span class="p">,</span> <span class="nx">prev</span><span class="p">)</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">33</span><span class="p">);</span> <span class="p">})</span>
+        <span class="p">.</span><span class="nx">onMethod</span><span class="p">(</span><span class="s1">'emethod1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$super</span><span class="p">,</span> <span class="nx">p1</span><span class="p">,</span> <span class="nx">p2</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">123</span><span class="p">;</span> <span class="p">});</span>
+
+<span class="c1">// Declaration of actions for block b-test with testmod modifier.</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">BEM</span><span class="p">.</span><span class="nx">decl</span><span class="p">(</span><span class="s1">'b-test'</span><span class="p">,</span> <span class="s1">'testmod'</span><span class="p">)</span>
+    <span class="c1">// Callbacks below will appear in list of matched callbacks only for b-test</span>
+    <span class="c1">// blocks with testmod modifier set.</span>
+    <span class="p">.</span><span class="nx">onMod</span><span class="p">(</span><span class="s1">'mod1'</span><span class="p">,</span>
+        <span class="kd">function</span><span class="p">(</span><span class="nx">$super</span><span class="p">,</span> <span class="nx">mod</span><span class="p">,</span> <span class="nx">val</span><span class="p">,</span> <span class="nx">prev</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'boo'</span><span class="p">);</span>
+            <span class="c1">// Call earlier declared callback.</span>
+            <span class="nx">$super</span><span class="p">(</span><span class="nx">mod</span><span class="p">,</span> <span class="nx">val</span><span class="p">,</span> <span class="nx">prev</span><span class="p">);</span>
+        <span class="p">})</span>
+    <span class="p">.</span><span class="nx">onMethod</span><span class="p">(</span><span class="s1">'method1'</span><span class="p">,</span>
+        <span class="kd">function</span><span class="p">(</span><span class="nx">$super</span><span class="p">,</span> <span class="nx">p1</span><span class="p">,</span> <span class="nx">p2</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Return some string plus earlier declared callback's result.</span>
+            <span class="k">return</span> <span class="s1">'value is: '</span> <span class="o">+</span> <span class="nx">$super</span><span class="p">(</span><span class="nx">p1</span><span class="p">,</span> <span class="nx">p2</span><span class="p">);</span>
+        <span class="p">});</span>
+
+<span class="c1">// Declaration of actions for block b-test with testmod=yes modifier.</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">BEM</span><span class="p">.</span><span class="nx">decl</span><span class="p">(</span><span class="s1">'b-test'</span><span class="p">,</span> <span class="s1">'testmod'</span><span class="p">,</span> <span class="s1">'yes'</span><span class="p">)</span>
+    <span class="c1">// Callback below will appear in list of matched callbacks only for b-test</span>
+    <span class="c1">// blocks with testmod modifier set to yes.</span>
+    <span class="p">.</span><span class="nx">onMod</span><span class="p">(</span><span class="s1">'mod1'</span><span class="p">,</span>
+        <span class="kd">function</span><span class="p">(</span><span class="nx">$super</span><span class="p">,</span> <span class="nx">mod</span><span class="p">,</span> <span class="nx">val</span><span class="p">,</span> <span class="nx">prev</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Call earlier declared callback.</span>
+            <span class="nx">$super</span><span class="p">(</span><span class="nx">mod</span><span class="p">,</span> <span class="nx">val</span><span class="p">,</span> <span class="nx">prev</span><span class="p">);</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'moo'</span><span class="p">);</span>
+        <span class="p">});</span>
+</pre></div>
+<p class="b-paragraph">
+                    Suppose, we have DOM like below:
+                </p>
+<div class="b-code b-code_highlight_html b-code_pre_yes"><pre>...
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"b-test"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"b-test b-test_testmod_no"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"b-test b-test_testmod_yes"</span><span class="nt">&gt;</span>3<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+...
+</pre></div>
+<p class="b-paragraph">
+                    And we call:
+                </p>
+<div class="b-code b-code_highlight_javascript b-code_pre_yes"><pre><span class="o">&gt;</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'@b-test'</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">bemSetMod</span><span class="p">(</span><span class="s1">'mod1'</span><span class="p">,</span> <span class="s1">'bla'</span><span class="p">);</span> <span class="c1">// First b-test.</span>
+<span class="mi">1</span>
+
+<span class="o">&gt;</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'@b-test'</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">bemSetMod</span><span class="p">(</span><span class="s1">'mod1'</span><span class="p">,</span> <span class="s1">'bla'</span><span class="p">);</span> <span class="c1">// Second b-test.</span>
+<span class="nx">boo</span>
+<span class="mi">1</span>
+
+<span class="o">&gt;</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'@b-test'</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="nx">bemSetMod</span><span class="p">(</span><span class="s1">'mod1'</span><span class="p">,</span> <span class="s1">'bla'</span><span class="p">);</span> <span class="c1">// Third b-test.</span>
+<span class="nx">boo</span>
+<span class="mi">1</span>
+<span class="nx">moo</span>
+
+<span class="o">&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">'@b-test'</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">bemCall</span><span class="p">(</span><span class="s1">'method1'</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span> <span class="c1">// First b-test.</span>
+<span class="mi">3</span>
+
+<span class="o">&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">'@b-test'</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">bemCall</span><span class="p">(</span><span class="s1">'method1'</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span> <span class="c1">// Second b-test.</span>
+<span class="nx">value</span> <span class="nx">is</span><span class="o">:</span> <span class="mi">3</span>
+</pre></div></section><section class="b-section"><h3 id="example" class="b-section__title">Example</h3>
 <p class="b-paragraph">Pending.</p></section><footer class="b-footer"><a href="mailto:dakota@brokenpipe.ru">Marat Abdullin</a></footer>
 </div></body>
 </html>
