@@ -54,6 +54,7 @@ and
                 <block:b-contents>
                     <elem:item href="#principles">Basic Principles</elem:item>
                     <elem:item href="#find">Finding Blocks and Elements</elem:item>
+                    <elem:item href="#actions">Setting Modifiers and Calling Methods</elem:item>
                     <elem:item href="#decl">JavaScript Declaration</elem:item>
                     <elem:item href="#example">Example</elem:item>
                 </block:b-contents>
@@ -217,7 +218,7 @@ $('@b-button').closest('@b-form{active=yes}');
         </block:b-section>
 
         <block:b-section>
-            <elem:title anchor="decl">Setting Modifiers and Calling Methods</elem:title>
+            <elem:title anchor="actions">Setting Modifiers and Calling Methods</elem:title>
             <elem:content>
                 <block:b-paragraph>
 jQuery BEM extends
