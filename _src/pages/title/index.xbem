@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <block:b-page
-    xmlns:block="http://xslc.org/BEM/Block"
-    xmlns:elem="http://xslc.org/BEM/Element"
-    xmlns:mod="http://xslc.org/BEM/Modifier">
+    xmlns:block="http://xslc.org/XBEM/Block"
+    xmlns:elem="http://xslc.org/XBEM/Element"
+    xmlns:mod="http://xslc.org/XBEM/Modifier">
 
     <elem:title>Title's About</elem:title>
     <elem:content>

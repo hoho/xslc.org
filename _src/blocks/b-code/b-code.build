@@ -1,0 +1,4 @@
+[b-code.build]
+MODULE = b-code.py
+FUNCTION = b_code_highlight
+

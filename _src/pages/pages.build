@@ -1,0 +1,15 @@
+[pages]
+BLOCKS = ../blocks
+PAGES = index.xbem */*.xbem
+
+DEPS_COMMON = i-jquery/i-jquery__bem i-common/i-common
+
+BUILD = ../..
+BUILD_html
+BUILD_common_css = cssjs/css.css
+BUILD_common_js = cssjs/js.js
+
+#BUILD_css
+#BUILD_xsl
+#BUILD_xbem
+#BUILD_js

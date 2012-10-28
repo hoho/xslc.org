@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <block:b-page
-    xmlns:block="http://xslc.org/BEM/Block"
-    xmlns:elem="http://xslc.org/BEM/Element"
-    xmlns:mod="http://xslc.org/BEM/Modifier">
+    xmlns:block="http://xslc.org/XBEM/Block"
+    xmlns:elem="http://xslc.org/XBEM/Element"
+    xmlns:mod="http://xslc.org/XBEM/Modifier">
 
     <elem:title>jQuery BEM</elem:title>
     <elem:content>
@@ -407,9 +407,7 @@ $.BEM.decl('b-test', 'testmod', 'yes')
 ...
                 ]]></block:b-code>
 
-                <block:b-paragraph>
-                    And we call:
-                </block:b-paragraph>
+                <block:b-paragraph>And we call:</block:b-paragraph>
 
                 <block:b-code mod:highlight="javascript" mod:pre="yes"><![CDATA[
 > $('@b-test').eq(0).bemSetMod('mod1', 'bla'); // First b-test.
@@ -437,7 +435,7 @@ value is: 3
             <elem:content><block:b-paragraph>Pending.</block:b-paragraph></elem:content>
         </block:b-section>
 
-        <!--<block:b-comments mod:js="yes" id="jquery-bem" />-->
+        <block:b-comments mod:js="yes" id="jquery-bem" />
         <block:b-footer />
     </elem:content>
 

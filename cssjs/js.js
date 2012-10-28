@@ -1,6 +1,6 @@
 
 
-/* Begin of blocks/i-jquery/i-jquery__bem.js. */
+/* Begin of ../_src/blocks/i-jquery/i-jquery__bem.js. */
 /*!
  * jQuery BEM — v0.0.1 — 2012-10-04
  * https://github.com/hoho/jquery-bem
@@ -296,12 +296,10 @@ $.fn.bemSetMod = function(where, mod, val) {
 ///////////////////////////////////////////////////////////////////////////////
 })(jQuery);
 
-/* End of blocks/i-jquery/i-jquery__bem.js. */
+/* End of ../_src/blocks/i-jquery/i-jquery__bem.js. */
 
 
-
-
-/* Begin of blocks/i-common/i-common.js. */
+/* Begin of ../_src/blocks/i-common/i-common.js. */
 $(function() {
     // Find blocks with JavaScript enabled and set js=inited modifier (so,
     // blocks could react to this modifier's change to initialize and
@@ -309,30 +307,10 @@ $(function() {
     $('.js').bemSetMod('js', 'inited');
 });
 
-/* End of blocks/i-common/i-common.js. */
+/* End of ../_src/blocks/i-common/i-common.js. */
 
 
-
-
-/* Begin of blocks/b-comments/b-comments.js. */
-$.BEM.decl('b-comments')
-    .onMod('js',
-        function($super, mod, val, prev) {
-            if (val !== 'inited') { return; }
-
-            var dsq = document.createElement('script');
-            dsq.type = 'text/javascript';
-            dsq.async = true;
-            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        });
-
-/* End of blocks/b-comments/b-comments.js. */
-
-
-
-
-/* Begin of blocks/b-stuff-item/b-stuff-item.js. */
+/* Begin of ../_src/blocks/b-stuff-item/b-stuff-item.js. */
 $.BEM.decl('b-stuff-item')
     .onMod('js',
         function($super, mod, val, prev) {
@@ -347,5 +325,21 @@ $.BEM.decl('b-stuff-item')
                 .on('mouseup mouseleave', function() { inner.bemSetMod('pressed', ''); });
         });
 
-/* End of blocks/b-stuff-item/b-stuff-item.js. */
+/* End of ../_src/blocks/b-stuff-item/b-stuff-item.js. */
+
+
+/* Begin of ../_src/blocks/b-comments/b-comments.js. */
+$.BEM.decl('b-comments')
+    .onMod('js',
+        function($super, mod, val, prev) {
+            if (val !== 'inited') { return; }
+
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        });
+
+/* End of ../_src/blocks/b-comments/b-comments.js. */
 
