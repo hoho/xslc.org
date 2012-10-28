@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<block:b-page-redirect
+    href="/XBEM/"
+    xmlns:block="http://xslc.org/XBEM/Block" />

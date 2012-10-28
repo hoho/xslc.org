@@ -64,6 +64,11 @@ table
 
 
 /* Begin of ../_src/blocks/b-section/b-section.css. */
+.b-section
+{
+    clear: both;
+}
+
 .b-section__title
 {
     font-size: 150%;
@@ -83,7 +88,7 @@ table
 {
     float: left;
 
-    margin: 2em 0 3em;
+    margin-bottom: 2em;
 
     width: 49%;
 }

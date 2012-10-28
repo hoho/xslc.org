@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<block:b-page
+    xmlns:block="http://xslc.org/XBEM/Block"
+    xmlns:elem="http://xslc.org/XBEM/Element"
+    xmlns:mod="http://xslc.org/XBEM/Modifier">
+
+    <elem:title>XBEM</elem:title>
+    <elem:content>
+        <block:b-header>XBEM</block:b-header>
+        <block:b-section>
+            <elem:title>About XBEM</elem:title>
+            <elem:content>
+                <block:b-paragraph>
+                    XBEM is a well-formed XML to store BEM-tree.
+                </block:b-paragraph>
+
+                <block:b-paragraph>Pending.</block:b-paragraph>
+            </elem:content>
+        </block:b-section>
+        <!--<block:b-comments mod:js="yes" id="xslc/xbem-build" />-->
+        <block:b-footer />
+    </elem:content>
+
+</block:b-page>

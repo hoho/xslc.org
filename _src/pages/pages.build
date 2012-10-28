@@ -1,6 +1,6 @@
 [pages]
 BLOCKS = ../blocks
-PAGES = index.xbem */*.xbem
+PAGES = index.xbem title/index.xbem jquery-bem/index.xbem xbem-build/index.xbem XBEM/index.xbem
 
 DEPS_COMMON = i-jquery/i-jquery__bem i-common/i-common
 
@@ -13,3 +13,12 @@ BUILD_common_js = cssjs/js.js
 #BUILD_xsl
 #BUILD_xbem
 #BUILD_js
+
+[redirect-pages]
+BLOCKS = ../blocks
+PAGES = XBEM/*/index.xbem
+
+DEPS_COMMON = i-common/i-common
+
+BUILD = ../..
+BUILD_html

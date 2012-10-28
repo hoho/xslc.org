@@ -2,7 +2,6 @@ start: build
 	jekyll .. ../_site --server
 
 build:
-	rm -rf .build
 	cd pages; xbem-build pages.build; cd ..
 	if test "$(MINIMIZE)" = "yes"; then \
 		uglifyjs --no-copyright -o ../cssjs/js.js ../cssjs/js.js; \

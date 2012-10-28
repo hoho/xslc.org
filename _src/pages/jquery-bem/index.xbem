@@ -40,8 +40,10 @@ plugin is an alternative implementation of just client-side BEM runtime. This
 means that it's up to you how to build your pages, but if your markup
 corresponds to certain principals, you can use this plugin to find blocks and
 elements, change modifiers and react to modifiers changes. This site uses
-jQuery BEM and is being built with a simple Python script. Check
-<block:b-link href="https://github.com/hoho/xslc.org/blob/gh-pages/_src/pages/jquery-bem/index.xml">this page's source</block:b-link>
+<block:b-link href="/XBEM/">XBEM</block:b-link> format to store BEM-tree and
+<block:b-link mod:type="code" href="/xbem-build/">xbem-build</block:b-link> to build all the
+markup. Check
+<block:b-link href="https://github.com/hoho/xslc.org/blob/gh-pages/_src/pages/jquery-bem/index.xbem">this page's source</block:b-link>
 and
 <block:b-link href="https://github.com/hoho/xslc.org/tree/gh-pages/_src/blocks">blocks' sources</block:b-link>.
                 </block:b-paragraph>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<block:b-page
+    xmlns:block="http://xslc.org/XBEM/Block"
+    xmlns:elem="http://xslc.org/XBEM/Element"
+    xmlns:mod="http://xslc.org/XBEM/Modifier">
+
+    <elem:title>xbem-build</elem:title>
+    <elem:content>
+        <block:b-header>xbem-build</block:b-header>
+        <block:b-section>
+            <elem:title>About xbem-build</elem:title>
+            <elem:content>
+                <block:b-paragraph>Pending.</block:b-paragraph>
+            </elem:content>
+        </block:b-section>
+        <!--<block:b-comments mod:js="yes" id="xslc/xbem-build" />-->
+        <block:b-footer />
+    </elem:content>
+
+</block:b-page>
