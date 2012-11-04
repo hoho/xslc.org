@@ -9,7 +9,7 @@ body
 
     font: 18px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-    font-weight: normal;
+    font-weight: 300;
 
     padding: 50px;
 }
@@ -53,11 +53,18 @@ table
 
     font-size: 300%;
 
-    font-weight: normal;
+    font-weight: 300;
 
     line-height: 110%;
 
     margin: 0 0 20px;
+}
+
+.b-header__github
+{
+    float: right;
+
+    font-size: 18px;
 }
 
 /* End of ../_src/blocks/b-header/b-header.css. */
@@ -73,7 +80,7 @@ table
 {
     font-size: 150%;
 
-    font-weight: normal;
+    font-weight: 300;
 
     line-height: 110%;
 

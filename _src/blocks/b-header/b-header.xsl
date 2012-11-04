@@ -14,12 +14,25 @@
             <h1>
                 <xsl:choose>
                     <xsl:when test="node()">
-                        <xsl:apply-templates mode="copy-content" />
+                        <xsl:apply-templates />
                     </xsl:when>
                     <xsl:otherwise>eXtra Space for Logs and Code<a href="/title/">*</a></xsl:otherwise>
                 </xsl:choose>
             </h1>
         </header>
+    </xsl:template>
+
+
+    <xsl:template match="block:b-header/elem:github">
+        <a href="{@href}">
+            <xsl:call-template name="elem:class" />
+            <xsl:text>View on GitHub</xsl:text>
+        </a>
+    </xsl:template>
+
+
+    <xsl:template match="block:b-header/elem:title">
+        <xsl:apply-templates />
     </xsl:template>
 
 

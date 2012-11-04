@@ -6,7 +6,10 @@
 
     <elem:title>jQuery BEM</elem:title>
     <elem:content>
-        <block:b-header>jQuery BEM</block:b-header>
+        <block:b-header>
+            <elem:github href="https://github.com/hoho/jquery-bem" />
+            <elem:title>jQuery BEM</elem:title>
+        </block:b-header>
         <block:b-section>
             <elem:title>Disclaimer</elem:title>
             <elem:content>
@@ -76,7 +79,7 @@ nodes. So, correct class names are the key to success.
                     <elem:item>
                         Block names should start with
                         <block:b-code>b-</block:b-code> or
-                        <block:b-code>i-</block:b-code>.
+                        <block:b-code>l-</block:b-code>.
                     </elem:item>
                     <elem:item>
                         Block's, element's and modifier's name and modifier's
