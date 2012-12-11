@@ -135,11 +135,11 @@ functions</a>.
 
                 <ul class="b-list">
 <li class="b-list__item">
-                        <code class="b-code">@b-block</code> selects all
+                        <code class="b-code">%b-block</code> selects all
                         blocks with the given name.
                     </li>
 <li class="b-list__item">
-                        <code class="b-code">@b-block(elem)</code> selects
+                        <code class="b-code">%b-block(elem)</code> selects
                         all elements with the given name of all blocks with the
                         given name.
                     </li>
@@ -189,20 +189,20 @@ functions</a>.
                 </p>
 
                 <div class="b-code b-code_highlight_javascript b-code_pre_yes"><pre><span class="c1">// Find all blocks named b-test.</span>
-<span class="nx">$</span><span class="p">(</span><span class="s1">'@b-test'</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'%b-test'</span><span class="p">);</span>
 
 <span class="c1">// Find all blocks named b-test that have the specified modifier.</span>
-<span class="nx">$</span><span class="p">(</span><span class="s1">'@b-test{cool=yes}'</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'%b-test{cool=yes}'</span><span class="p">);</span>
 
 <span class="c1">// Find all elements named elem1 of blocks named b-test that have the specified</span>
 <span class="c1">// modifier.</span>
-<span class="nx">$</span><span class="p">(</span><span class="s1">'@b-test(elem1){cool=yes}'</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'%b-test(elem1){cool=yes}'</span><span class="p">);</span>
 
 <span class="c1">// Just another example.</span>
-<span class="nx">$</span><span class="p">(</span><span class="s1">'div @b-test span[id="123"] @b-test2[value="yo"]{test=yes}{ok=no}'</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'div %b-test span[id="123"] %b-test2[value="yo"]{test=yes}{ok=no}'</span><span class="p">);</span>
 
 <span class="c1">// And yet another one.</span>
-<span class="nx">$</span><span class="p">(</span><span class="s1">'@b-button'</span><span class="p">).</span><span class="nx">closest</span><span class="p">(</span><span class="s1">'@b-form{active=yes}'</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'%b-button'</span><span class="p">).</span><span class="nx">closest</span><span class="p">(</span><span class="s1">'%b-form{active=yes}'</span><span class="p">);</span>
 </pre></div>
             </section>
 
@@ -389,22 +389,22 @@ elements:
 
                 <p class="b-paragraph">And we call:</p>
 
-                <div class="b-code b-code_highlight_javascript b-code_pre_yes"><pre><span class="o">&gt;</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'@b-test'</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">bemSetMod</span><span class="p">(</span><span class="s1">'mod1'</span><span class="p">,</span> <span class="s1">'bla'</span><span class="p">);</span> <span class="c1">// First b-test.</span>
+                <div class="b-code b-code_highlight_javascript b-code_pre_yes"><pre><span class="o">&gt;</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'%b-test'</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">bemSetMod</span><span class="p">(</span><span class="s1">'mod1'</span><span class="p">,</span> <span class="s1">'bla'</span><span class="p">);</span> <span class="c1">// First b-test.</span>
 <span class="mi">1</span>
 
-<span class="o">&gt;</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'@b-test'</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">bemSetMod</span><span class="p">(</span><span class="s1">'mod1'</span><span class="p">,</span> <span class="s1">'bla'</span><span class="p">);</span> <span class="c1">// Second b-test.</span>
+<span class="o">&gt;</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'%b-test'</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">bemSetMod</span><span class="p">(</span><span class="s1">'mod1'</span><span class="p">,</span> <span class="s1">'bla'</span><span class="p">);</span> <span class="c1">// Second b-test.</span>
 <span class="nx">boo</span>
 <span class="mi">1</span>
 
-<span class="o">&gt;</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'@b-test'</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="nx">bemSetMod</span><span class="p">(</span><span class="s1">'mod1'</span><span class="p">,</span> <span class="s1">'bla'</span><span class="p">);</span> <span class="c1">// Third b-test.</span>
+<span class="o">&gt;</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'%b-test'</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="nx">bemSetMod</span><span class="p">(</span><span class="s1">'mod1'</span><span class="p">,</span> <span class="s1">'bla'</span><span class="p">);</span> <span class="c1">// Third b-test.</span>
 <span class="nx">boo</span>
 <span class="mi">1</span>
 <span class="nx">moo</span>
 
-<span class="o">&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">'@b-test'</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">bemCall</span><span class="p">(</span><span class="s1">'method1'</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span> <span class="c1">// First b-test.</span>
+<span class="o">&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">'%b-test'</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">bemCall</span><span class="p">(</span><span class="s1">'method1'</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span> <span class="c1">// First b-test.</span>
 <span class="mi">3</span>
 
-<span class="o">&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">'@b-test'</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">bemCall</span><span class="p">(</span><span class="s1">'method1'</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span> <span class="c1">// Second b-test.</span>
+<span class="o">&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">'%b-test'</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">bemCall</span><span class="p">(</span><span class="s1">'method1'</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span> <span class="c1">// Second b-test.</span>
 <span class="nx">value</span> <span class="nx">is</span><span class="o">:</span> <span class="mi">3</span>
 </pre></div>
             </section>

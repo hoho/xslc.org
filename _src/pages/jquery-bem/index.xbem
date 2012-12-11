@@ -149,11 +149,11 @@ functions</block:b-link>.
 
                 <block:b-list>
                     <elem:item>
-                        <block:b-code>@b-block</block:b-code> selects all
+                        <block:b-code>%b-block</block:b-code> selects all
                         blocks with the given name.
                     </elem:item>
                     <elem:item>
-                        <block:b-code>@b-block(elem)</block:b-code> selects
+                        <block:b-code>%b-block(elem)</block:b-code> selects
                         all elements with the given name of all blocks with the
                         given name.
                     </elem:item>
@@ -204,20 +204,20 @@ functions</block:b-link>.
 
                 <block:b-code mod:highlight="javascript" mod:pre="yes"><![CDATA[
 // Find all blocks named b-test.
-$('@b-test');
+$('%b-test');
 
 // Find all blocks named b-test that have the specified modifier.
-$('@b-test{cool=yes}');
+$('%b-test{cool=yes}');
 
 // Find all elements named elem1 of blocks named b-test that have the specified
 // modifier.
-$('@b-test(elem1){cool=yes}');
+$('%b-test(elem1){cool=yes}');
 
 // Just another example.
-$('div @b-test span[id="123"] @b-test2[value="yo"]{test=yes}{ok=no}');
+$('div %b-test span[id="123"] %b-test2[value="yo"]{test=yes}{ok=no}');
 
 // And yet another one.
-$('@b-button').closest('@b-form{active=yes}');
+$('%b-button').closest('%b-form{active=yes}');
                 ]]></block:b-code>
             </elem:content>
         </block:b-section>
@@ -415,22 +415,22 @@ $.BEM.decl('b-test', 'testmod', 'yes')
                 <block:b-paragraph>And we call:</block:b-paragraph>
 
                 <block:b-code mod:highlight="javascript" mod:pre="yes"><![CDATA[
-> $('@b-test').eq(0).bemSetMod('mod1', 'bla'); // First b-test.
+> $('%b-test').eq(0).bemSetMod('mod1', 'bla'); // First b-test.
 1
 
-> $('@b-test').eq(1).bemSetMod('mod1', 'bla'); // Second b-test.
+> $('%b-test').eq(1).bemSetMod('mod1', 'bla'); // Second b-test.
 boo
 1
 
-> $('@b-test').eq(2).bemSetMod('mod1', 'bla'); // Third b-test.
+> $('%b-test').eq(2).bemSetMod('mod1', 'bla'); // Third b-test.
 boo
 1
 moo
 
-> console.log($('@b-test').eq(0).bemCall('method1', 1, 2)); // First b-test.
+> console.log($('%b-test').eq(0).bemCall('method1', 1, 2)); // First b-test.
 3
 
-> console.log($('@b-test').eq(1).bemCall('method1', 1, 2)); // Second b-test.
+> console.log($('%b-test').eq(1).bemCall('method1', 1, 2)); // Second b-test.
 value is: 3
                 ]]></block:b-code>
             </elem:content>
