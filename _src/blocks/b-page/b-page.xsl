@@ -18,10 +18,10 @@
                         <xsl:value-of select="elem:title" />
                         <xsl:text> — </xsl:text>
                     </xsl:if>
-                    <xsl:text>eXtra Space for Logs and Code</xsl:text>
+                    <xsl:text>Xyz Stu Lmn Cde</xsl:text>
                 </title>
                 <link rel="stylesheet" href="/cssjs/css.css" />
-                <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+                <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
                 <script src="/cssjs/js.js"></script>
             </head>
             <body>

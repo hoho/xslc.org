@@ -1,49 +1,31 @@
 <!doctype html><html class="b-page">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>jQuery BEM — eXtra Space for Logs and Code</title>
+<title>jQuery BEM — Xyz Stu Lmn Cde</title>
 <link rel="stylesheet" href="/cssjs/css.css">
-<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script><script src="/cssjs/js.js"></script>
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script><script src="/cssjs/js.js"></script>
 </head>
 <body><div class="b-page__content">
         <header class="b-header"><h1>
             <a href="https://github.com/hoho/jquery-bem" class="b-header__github">View on GitHub</a>
             jQuery BEM
         </h1></header>
-        <section class="b-section"><h3 class="b-section__title">Disclaimer</h3>
-                <p class="b-paragraph">
-                    This documentation looks like a nightmare. But it's better
-                    than nothing. Someday it will improve.
-                </p>
-            </section>
 
         <section class="b-section"><h3 class="b-section__title">What is BEM?</h3>
                 <p class="b-paragraph">
 In short, Block-Element-Modifier (BEM) is a way to split project's markup,
-styles, scripts and images to small independent logical pieces. This helps to
-maintain, refactor and reuse these pieces in the long run (you describe page in
-terms of logical entities, not in terms of HTML elements).
+styles, scripts and images into small independent logical pieces. This helps to
+maintain, refactor and reuse these pieces in the long run.
                 </p>
 
                 <p class="b-paragraph">
 Read more at
-<a href="http://bem.info/" class="b-link">BEM's site</a>. You'll see
-descriptions and a large set of tools to create blocks and build pages there.
-And it'll probably be easier to understand the mess below.
+<a href="http://bem.info/" class="b-link">BEM's site</a>.
                 </p>
 
                 <p class="b-paragraph">
 <a href="https://github.com/hoho/jquery-bem" class="b-link">jQuery BEM</a>
-plugin is an alternative implementation of just client-side BEM runtime. This
-means that it's up to you how to build your pages, but if your markup
-corresponds to certain principals, you can use this plugin to find blocks and
-elements, change modifiers and react to modifiers changes. This site uses
-<a href="/XBEM/" class="b-link">XBEM</a> format to store BEM-tree and
-<a href="/xbem-build/" class="b-link b-link_type_code">xbem-build</a> to build all the
-markup. Check
-<a href="https://github.com/hoho/xslc.org/blob/gh-pages/_src/pages/jquery-bem/index.xbem" class="b-link">this page's source</a>
-and
-<a href="https://github.com/hoho/xslc.org/tree/gh-pages/_src/blocks" class="b-link">blocks' sources</a>.
+plugin is an alternative implementation of just client-side BEM runtime.
                 </p>
             </section>
 
@@ -53,6 +35,7 @@ and
 <li class="b-contents__item"><a href="#find">Finding Blocks and Elements</a></li>
 <li class="b-contents__item"><a href="#actions">Setting Modifiers and Calling Methods</a></li>
 <li class="b-contents__item"><a href="#decl">JavaScript Declaration</a></li>
+<li class="b-contents__item"><a href="#build">Builders</a></li>
 <li class="b-contents__item"><a href="#example">Example</a></li>
 </ul>
             </section>
@@ -242,18 +225,18 @@ of matched DOM elements.
 <li class="b-list__item">
 <code class="b-code b-code_highlight_javascript"><span class="p">.</span><span class="nx">bemCall</span><span class="p">(</span><span class="s1">'meth'</span><span class="p">)</span></code>
 <br>or<br>
-<code class="b-code b-code_highlight_javascript"><span class="p">.</span><span class="nx">bemCall</span><span class="p">({</span><span class="nx">method</span><span class="o">:</span> <span class="s1">'meth'</span><span class="p">})</span></code>
+<code class="b-code b-code_highlight_javascript"><span class="p">.</span><span class="nx">bemCall</span><span class="p">({</span><span class="nx">call</span><span class="o">:</span> <span class="s1">'meth'</span><span class="p">})</span></code>
 — call method named <span class="b-text b-text_em_yes">meth</span> of each
 block or element from the set of matched DOM elements.
                     </li>
 <li class="b-list__item">
-<code class="b-code b-code_highlight_javascript"><span class="p">.</span><span class="nx">bemCall</span><span class="p">({</span><span class="nx">method</span><span class="o">:</span> <span class="s1">'meth'</span><span class="p">,</span> <span class="nx">block</span><span class="o">:</span> <span class="s1">'b-block'</span><span class="p">})</span></code>
+<code class="b-code b-code_highlight_javascript"><span class="p">.</span><span class="nx">bemCall</span><span class="p">({</span><span class="nx">call</span><span class="o">:</span> <span class="s1">'meth'</span><span class="p">,</span> <span class="nx">block</span><span class="o">:</span> <span class="s1">'b-block'</span><span class="p">})</span></code>
 — call method named <span class="b-text b-text_em_yes">meth</span> of each
 block named <span class="b-text b-text_em_yes">b-block</span> from the set of
 matched DOM elements.
                     </li>
 <li class="b-list__item">
-<code class="b-code b-code_highlight_javascript"><span class="p">.</span><span class="nx">bemCall</span><span class="p">({</span><span class="nx">method</span><span class="o">:</span> <span class="s1">'meth'</span><span class="p">,</span> <span class="nx">block</span><span class="o">:</span> <span class="s1">'b-block'</span><span class="p">,</span> <span class="nx">elem</span><span class="o">:</span> <span class="s1">'elem1'</span><span class="p">})</span></code>
+<code class="b-code b-code_highlight_javascript"><span class="p">.</span><span class="nx">bemCall</span><span class="p">({</span><span class="nx">call</span><span class="o">:</span> <span class="s1">'meth'</span><span class="p">,</span> <span class="nx">block</span><span class="o">:</span> <span class="s1">'b-block'</span><span class="p">,</span> <span class="nx">elem</span><span class="o">:</span> <span class="s1">'elem1'</span><span class="p">})</span></code>
 — call method named <span class="b-text b-text_em_yes">meth</span> of each
 element named <span class="b-text b-text_em_yes">elem1</span> that belong to
 block named <span class="b-text b-text_nowrap_yes b-text_em_yes">b-block</span>
@@ -341,10 +324,10 @@ elements:
     <span class="p">.</span><span class="nx">onMod</span><span class="p">(</span><span class="s1">'mod3'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$super</span><span class="p">,</span> <span class="nx">mod</span><span class="p">,</span> <span class="nx">val</span><span class="p">,</span> <span class="nx">prev</span><span class="p">)</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span> <span class="p">})</span>
     <span class="c1">// Callback below will be called when method1 method of b-test block is</span>
     <span class="c1">// called.</span>
-    <span class="p">.</span><span class="nx">onMethod</span><span class="p">(</span><span class="s1">'method1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$super</span><span class="p">,</span> <span class="nx">p1</span><span class="p">,</span> <span class="nx">p2</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">p1</span> <span class="o">+</span> <span class="nx">p2</span><span class="p">;</span> <span class="p">})</span>
+    <span class="p">.</span><span class="nx">onCall</span><span class="p">(</span><span class="s1">'method1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$super</span><span class="p">,</span> <span class="nx">p1</span><span class="p">,</span> <span class="nx">p2</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">p1</span> <span class="o">+</span> <span class="nx">p2</span><span class="p">;</span> <span class="p">})</span>
     <span class="p">.</span><span class="nx">elem</span><span class="p">(</span><span class="s1">'elem2'</span><span class="p">,</span> <span class="s1">'emod3'</span><span class="p">,</span> <span class="s1">'yes'</span><span class="p">)</span>
         <span class="p">.</span><span class="nx">onMod</span><span class="p">(</span><span class="s1">'emod3'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$super</span><span class="p">,</span> <span class="nx">mod</span><span class="p">,</span> <span class="nx">val</span><span class="p">,</span> <span class="nx">prev</span><span class="p">)</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">33</span><span class="p">);</span> <span class="p">})</span>
-        <span class="p">.</span><span class="nx">onMethod</span><span class="p">(</span><span class="s1">'emethod1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$super</span><span class="p">,</span> <span class="nx">p1</span><span class="p">,</span> <span class="nx">p2</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">123</span><span class="p">;</span> <span class="p">});</span>
+        <span class="p">.</span><span class="nx">onCall</span><span class="p">(</span><span class="s1">'emethod1'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$super</span><span class="p">,</span> <span class="nx">p1</span><span class="p">,</span> <span class="nx">p2</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">123</span><span class="p">;</span> <span class="p">});</span>
 
 <span class="c1">// Declaration of actions for block b-test with testmod modifier.</span>
 <span class="nx">$</span><span class="p">.</span><span class="nx">BEM</span><span class="p">.</span><span class="nx">decl</span><span class="p">(</span><span class="s1">'b-test'</span><span class="p">,</span> <span class="s1">'testmod'</span><span class="p">)</span>
@@ -356,7 +339,7 @@ elements:
             <span class="c1">// Call earlier declared callback.</span>
             <span class="nx">$super</span><span class="p">(</span><span class="nx">mod</span><span class="p">,</span> <span class="nx">val</span><span class="p">,</span> <span class="nx">prev</span><span class="p">);</span>
         <span class="p">})</span>
-    <span class="p">.</span><span class="nx">onMethod</span><span class="p">(</span><span class="s1">'method1'</span><span class="p">,</span>
+    <span class="p">.</span><span class="nx">onCall</span><span class="p">(</span><span class="s1">'method1'</span><span class="p">,</span>
         <span class="kd">function</span><span class="p">(</span><span class="nx">$super</span><span class="p">,</span> <span class="nx">p1</span><span class="p">,</span> <span class="nx">p2</span><span class="p">)</span> <span class="p">{</span>
             <span class="c1">// Return some string plus earlier declared callback's result.</span>
             <span class="k">return</span> <span class="s1">'value is: '</span> <span class="o">+</span> <span class="nx">$super</span><span class="p">(</span><span class="nx">p1</span><span class="p">,</span> <span class="nx">p2</span><span class="p">);</span>
@@ -408,6 +391,10 @@ elements:
 <span class="nx">value</span> <span class="nx">is</span><span class="o">:</span> <span class="mi">3</span>
 </pre></div>
             </section>
+
+        <section class="b-section"><h3 id="build" class="b-section__title">Builders</h3>
+<p class="b-paragraph">Pending.</p></section>
+
         <section class="b-section"><h3 id="example" class="b-section__title">Example</h3>
 <p class="b-paragraph">Pending.</p></section>
 

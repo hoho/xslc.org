@@ -184,28 +184,6 @@ table
 /* End of ../_src/blocks/b-link/b-link.css. */
 
 
-/* Begin of ../_src/blocks/b-link/b-link_type_code.css. */
-.b-link_type_code
-{
-    font-family: Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal;
-
-    font-size: 90%;
-
-    margin: 0 2px;
-}
-
-/* End of ../_src/blocks/b-link/b-link_type_code.css. */
-
-
-/* Begin of ../_src/blocks/b-comments/b-comments.css. */
-.b-comments
-{
-    margin-top: 4em;
-}
-
-/* End of ../_src/blocks/b-comments/b-comments.css. */
-
-
 /* Begin of ../_src/blocks/b-code/b-code.css. */
 .b-code
 {
@@ -315,4 +293,13 @@ table
 }
 
 /* End of ../_src/blocks/b-text/b-text.css. */
+
+
+/* Begin of ../_src/blocks/b-comments/b-comments.css. */
+.b-comments
+{
+    margin-top: 4em;
+}
+
+/* End of ../_src/blocks/b-comments/b-comments.css. */
 

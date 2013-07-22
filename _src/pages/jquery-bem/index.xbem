@@ -10,45 +10,24 @@
             <elem:github href="https://github.com/hoho/jquery-bem" />
             <elem:title>jQuery BEM</elem:title>
         </block:b-header>
-        <block:b-section>
-            <elem:title>Disclaimer</elem:title>
-            <elem:content>
-                <block:b-paragraph>
-                    This documentation looks like a nightmare. But it's better
-                    than nothing. Someday it will improve.
-                </block:b-paragraph>
-            </elem:content>
-        </block:b-section>
 
         <block:b-section>
             <elem:title>What is BEM?</elem:title>
             <elem:content>
                 <block:b-paragraph>
 In short, Block-Element-Modifier (BEM) is a way to split project's markup,
-styles, scripts and images to small independent logical pieces. This helps to
-maintain, refactor and reuse these pieces in the long run (you describe page in
-terms of logical entities, not in terms of HTML elements).
+styles, scripts and images into small independent logical pieces. This helps to
+maintain, refactor and reuse these pieces in the long run.
                 </block:b-paragraph>
 
                 <block:b-paragraph>
 Read more at
-<block:b-link href="http://bem.info/">BEM's site</block:b-link>. You'll see
-descriptions and a large set of tools to create blocks and build pages there.
-And it'll probably be easier to understand the mess below.
+<block:b-link href="http://bem.info/">BEM's site</block:b-link>.
                 </block:b-paragraph>
 
                 <block:b-paragraph>
 <block:b-link href="https://github.com/hoho/jquery-bem">jQuery BEM</block:b-link>
-plugin is an alternative implementation of just client-side BEM runtime. This
-means that it's up to you how to build your pages, but if your markup
-corresponds to certain principals, you can use this plugin to find blocks and
-elements, change modifiers and react to modifiers changes. This site uses
-<block:b-link href="/XBEM/">XBEM</block:b-link> format to store BEM-tree and
-<block:b-link mod:type="code" href="/xbem-build/">xbem-build</block:b-link> to build all the
-markup. Check
-<block:b-link href="https://github.com/hoho/xslc.org/blob/gh-pages/_src/pages/jquery-bem/index.xbem">this page's source</block:b-link>
-and
-<block:b-link href="https://github.com/hoho/xslc.org/tree/gh-pages/_src/blocks">blocks' sources</block:b-link>.
+plugin is an alternative implementation of just client-side BEM runtime.
                 </block:b-paragraph>
             </elem:content>
         </block:b-section>
@@ -61,6 +40,7 @@ and
                     <elem:item href="#find">Finding Blocks and Elements</elem:item>
                     <elem:item href="#actions">Setting Modifiers and Calling Methods</elem:item>
                     <elem:item href="#decl">JavaScript Declaration</elem:item>
+                    <elem:item href="#build">Builders</elem:item>
                     <elem:item href="#example">Example</elem:item>
                 </block:b-contents>
             </elem:content>
@@ -260,18 +240,18 @@ of matched DOM elements.
                     <elem:item>
 <block:b-code mod:highlight="javascript">.bemCall('meth')</block:b-code>
 <br />or<br />
-<block:b-code mod:highlight="javascript">.bemCall({method: 'meth'})</block:b-code>
+<block:b-code mod:highlight="javascript">.bemCall({call: 'meth'})</block:b-code>
 — call method named <block:b-text mod:em="yes">meth</block:b-text> of each
 block or element from the set of matched DOM elements.
                     </elem:item>
                     <elem:item>
-<block:b-code mod:highlight="javascript">.bemCall({method: 'meth', block: 'b-block'})</block:b-code>
+<block:b-code mod:highlight="javascript">.bemCall({call: 'meth', block: 'b-block'})</block:b-code>
 — call method named <block:b-text mod:em="yes">meth</block:b-text> of each
 block named <block:b-text mod:em="yes">b-block</block:b-text> from the set of
 matched DOM elements.
                     </elem:item>
                     <elem:item>
-<block:b-code mod:highlight="javascript">.bemCall({method: 'meth', block: 'b-block', elem: 'elem1'})</block:b-code>
+<block:b-code mod:highlight="javascript">.bemCall({call: 'meth', block: 'b-block', elem: 'elem1'})</block:b-code>
 — call method named <block:b-text mod:em="yes">meth</block:b-text> of each
 element named <block:b-text mod:em="yes">elem1</block:b-text> that belong to
 block named <block:b-text mod:nowrap="yes" mod:em="yes">b-block</block:b-text>
@@ -365,10 +345,10 @@ $.BEM.decl('b-test')
     .onMod('mod3', function($super, mod, val, prev) { console.log(3); })
     // Callback below will be called when method1 method of b-test block is
     // called.
-    .onMethod('method1', function($super, p1, p2) { return p1 + p2; })
+    .onCall('method1', function($super, p1, p2) { return p1 + p2; })
     .elem('elem2', 'emod3', 'yes')
         .onMod('emod3', function($super, mod, val, prev) { console.log(33); })
-        .onMethod('emethod1', function($super, p1, p2) { return 123; });
+        .onCall('emethod1', function($super, p1, p2) { return 123; });
 
 // Declaration of actions for block b-test with testmod modifier.
 $.BEM.decl('b-test', 'testmod')
@@ -380,7 +360,7 @@ $.BEM.decl('b-test', 'testmod')
             // Call earlier declared callback.
             $super(mod, val, prev);
         })
-    .onMethod('method1',
+    .onCall('method1',
         function($super, p1, p2) {
             // Return some string plus earlier declared callback's result.
             return 'value is: ' + $super(p1, p2);
@@ -435,6 +415,12 @@ value is: 3
                 ]]></block:b-code>
             </elem:content>
         </block:b-section>
+
+        <block:b-section>
+            <elem:title anchor="build">Builders</elem:title>
+            <elem:content><block:b-paragraph>Pending.</block:b-paragraph></elem:content>
+        </block:b-section>
+
         <block:b-section>
             <elem:title anchor="example">Example</elem:title>
             <elem:content><block:b-paragraph>Pending.</block:b-paragraph></elem:content>

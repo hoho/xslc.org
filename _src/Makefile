@@ -1,5 +1,5 @@
 start: build
-	jekyll .. ../_site --server
+	jekyll serve -s .. -d ../_site
 
 build:
 	cd pages; xbem-build pages.build; cd ..

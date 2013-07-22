@@ -16,7 +16,7 @@
                     <xsl:when test="node()">
                         <xsl:apply-templates />
                     </xsl:when>
-                    <xsl:otherwise>eXtra Space for Logs and Code<a href="/title/">*</a></xsl:otherwise>
+                    <xsl:otherwise>Xyz Stu Lmn Cde<a href="/title/">*</a></xsl:otherwise>
                 </xsl:choose>
             </h1>
         </header>
