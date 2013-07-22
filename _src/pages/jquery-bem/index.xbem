@@ -98,16 +98,6 @@ named <block:b-code>elem1</block:b-code>. Second element is named
 </div>]]></block:b-code>
                     </elem:item>
                 </block:b-list>
-
-                <block:b-paragraph>
-Once again, it's up to you, how to get HTML. You can use any structures for
-your BEM-tree and any template engine to transform it to HTML. This site, for
-example, uses
-<block:b-link href="http://en.wikipedia.org/wiki/XML">XML</block:b-link> to
-store BEM-tree and
-<block:b-link href="http://en.wikipedia.org/wiki/XSLT">XSLT</block:b-link> to
-create HTML.
-                </block:b-paragraph>
             </elem:content>
         </block:b-section>
 
@@ -209,28 +199,26 @@ $('%b-button').closest('%b-form{active=yes}');
 jQuery BEM extends
 <block:b-link href="http://api.jquery.com/Types/#jQuery">jQuery
 object</block:b-link> with two methods:
-<block:b-code>.bemSetMod()</block:b-code> and
+<block:b-code>.bemMod()</block:b-code> and
 <block:b-code>.bemCall()</block:b-code>.
                 </block:b-paragraph>
 
                 <block:b-list>
                     <elem:item>
-<block:b-code mod:highlight="javascript">.bemSetMod('mod', 'val')</block:b-code>
+<block:b-code mod:highlight="javascript">.bemMod('mod', 'val')</block:b-code>
 — set modifier <block:b-text mod:em="yes">mod</block:b-text> to
 <block:b-text mod:em="yes">val</block:b-text> for each block or element from
 the set of matched DOM elements.
                     </elem:item>
                     <elem:item>
-<block:b-code mod:highlight="javascript">.bemSetMod('b-block', 'mod', 'val')</block:b-code>
-<br />or<br />
-<block:b-code mod:highlight="javascript">.bemSetMod({block: 'b-block'}, 'mod', 'val')</block:b-code>
+<block:b-code mod:highlight="javascript">.bemMod({block: 'b-block', mod: 'mod'}, 'val')</block:b-code>
 — set modifier <block:b-text mod:em="yes">mod</block:b-text> to
 <block:b-text mod:em="yes">val</block:b-text> for each block with
 <block:b-text mod:nowrap="yes" mod:em="yes">b-block</block:b-text> name from
 the set of matched DOM elements.
                     </elem:item>
                     <elem:item>
-<block:b-code mod:highlight="javascript">.bemSetMod({block: 'b-block', elem: 'elem1'}, 'mod', 'val')</block:b-code>
+<block:b-code mod:highlight="javascript">.bemMod({block: 'b-block', elem: 'elem1', mod: 'mod'}, 'val')</block:b-code>
 — set modifier <block:b-text mod:em="yes">mod</block:b-text> to
 <block:b-text mod:em="yes">val</block:b-text> for each element named
 <block:b-text mod:em="yes">elem1</block:b-text> that belong to block named
@@ -257,6 +245,17 @@ element named <block:b-text mod:em="yes">elem1</block:b-text> that belong to
 block named <block:b-text mod:nowrap="yes" mod:em="yes">b-block</block:b-text>
 from the set of matched DOM elements.
                     </elem:item>
+                    <elem:item>
+<block:b-code mod:highlight="javascript">.bemMod('mod')</block:b-code>
+<br />or<br />
+<block:b-code mod:highlight="javascript">.bemMod({block: 'b-block', mod: 'mod'})</block:b-code>
+<br />or<br />
+<block:b-code mod:highlight="javascript">.bemMod({block: 'b-block', elem: 'elem1', mod: 'mod'})</block:b-code>
+— get <block:b-text mod:em="yes">mod</block:b-text> modifier
+of the first block or the first block named <block:b-text mod:em="yes">b-block</block:b-text> or
+the first element named <block:b-text mod:em="yes">elem1</block:b-text> of the block
+named <block:b-text mod:em="yes">b-block</block:b-text> respectively.
+                    </elem:item>
                 </block:b-list>
 
                 <block:b-paragraph>
@@ -281,9 +280,9 @@ from the set of matched DOM elements.
 
                 <block:b-code mod:highlight="javascript" mod:pre="yes"><![CDATA[
 $('*') // Select all DOM elements.
-    .bemSetMod('mod1', 'val1')
-    .bemSetMod('b-block2', 'mod2', 'val2')
-    .bemSetMod({block: 'b-block4', elem: 'elem2'}, 'mod3', 'val3');
+    .bemMod('mod1', 'val1')
+    .bemMod({block: 'b-block2', mod: 'mod2'}, 'val2')
+    .bemMod({block: 'b-block4', elem: 'elem2', mod: 'mod3'}, 'val3');
                 ]]></block:b-code>
 
                 <block:b-paragraph>
@@ -395,14 +394,14 @@ $.BEM.decl('b-test', 'testmod', 'yes')
                 <block:b-paragraph>And we call:</block:b-paragraph>
 
                 <block:b-code mod:highlight="javascript" mod:pre="yes"><![CDATA[
-> $('%b-test').eq(0).bemSetMod('mod1', 'bla'); // First b-test.
+> $('%b-test').eq(0).bemMod('mod1', 'bla'); // First b-test.
 1
 
-> $('%b-test').eq(1).bemSetMod('mod1', 'bla'); // Second b-test.
+> $('%b-test').eq(1).bemMod('mod1', 'bla'); // Second b-test.
 boo
 1
 
-> $('%b-test').eq(2).bemSetMod('mod1', 'bla'); // Third b-test.
+> $('%b-test').eq(2).bemMod('mod1', 'bla'); // Third b-test.
 boo
 1
 moo

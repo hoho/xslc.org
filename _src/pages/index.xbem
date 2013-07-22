@@ -18,7 +18,7 @@
                 </block:b-stuff-item>
                 <block:b-stuff-item mod:js="yes" mod:type="xrlt" href="http://xrlt.net/">
                     <elem:title>XRLT Project</elem:title>
-                    <elem:desc>To build web-pages from server side</elem:desc>
+                    <elem:desc>To build web-pages from the server side</elem:desc>
                 </block:b-stuff-item>
             </elem:content>
         </block:b-section>

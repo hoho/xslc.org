@@ -90,16 +90,6 @@ named <code class="b-code">elem1</code>. Second element is named
 </pre></div>
                     </li>
 </ul>
-
-                <p class="b-paragraph">
-Once again, it's up to you, how to get HTML. You can use any structures for
-your BEM-tree and any template engine to transform it to HTML. This site, for
-example, uses
-<a href="http://en.wikipedia.org/wiki/XML" class="b-link">XML</a> to
-store BEM-tree and
-<a href="http://en.wikipedia.org/wiki/XSLT" class="b-link">XSLT</a> to
-create HTML.
-                </p>
             </section>
 
         <section class="b-section"><h3 id="find" class="b-section__title">Finding Blocks and Elements</h3>
@@ -194,28 +184,26 @@ functions</a>.
 jQuery BEM extends
 <a href="http://api.jquery.com/Types/#jQuery" class="b-link">jQuery
 object</a> with two methods:
-<code class="b-code">.bemSetMod()</code> and
+<code class="b-code">.bemMod()</code> and
 <code class="b-code">.bemCall()</code>.
                 </p>
 
                 <ul class="b-list">
 <li class="b-list__item">
-<code class="b-code b-code_highlight_javascript"><span class="p">.</span><span class="nx">bemSetMod</span><span class="p">(</span><span class="s1">'mod'</span><span class="p">,</span> <span class="s1">'val'</span><span class="p">)</span></code>
+<code class="b-code b-code_highlight_javascript"><span class="p">.</span><span class="nx">bemMod</span><span class="p">(</span><span class="s1">'mod'</span><span class="p">,</span> <span class="s1">'val'</span><span class="p">)</span></code>
 — set modifier <span class="b-text b-text_em_yes">mod</span> to
 <span class="b-text b-text_em_yes">val</span> for each block or element from
 the set of matched DOM elements.
                     </li>
 <li class="b-list__item">
-<code class="b-code b-code_highlight_javascript"><span class="p">.</span><span class="nx">bemSetMod</span><span class="p">(</span><span class="s1">'b-block'</span><span class="p">,</span> <span class="s1">'mod'</span><span class="p">,</span> <span class="s1">'val'</span><span class="p">)</span></code>
-<br>or<br>
-<code class="b-code b-code_highlight_javascript"><span class="p">.</span><span class="nx">bemSetMod</span><span class="p">({</span><span class="nx">block</span><span class="o">:</span> <span class="s1">'b-block'</span><span class="p">},</span> <span class="s1">'mod'</span><span class="p">,</span> <span class="s1">'val'</span><span class="p">)</span></code>
+<code class="b-code b-code_highlight_javascript"><span class="p">.</span><span class="nx">bemMod</span><span class="p">({</span><span class="nx">block</span><span class="o">:</span> <span class="s1">'b-block'</span><span class="p">,</span> <span class="nx">mod</span><span class="o">:</span> <span class="s1">'mod'</span><span class="p">},</span> <span class="s1">'val'</span><span class="p">)</span></code>
 — set modifier <span class="b-text b-text_em_yes">mod</span> to
 <span class="b-text b-text_em_yes">val</span> for each block with
 <span class="b-text b-text_nowrap_yes b-text_em_yes">b-block</span> name from
 the set of matched DOM elements.
                     </li>
 <li class="b-list__item">
-<code class="b-code b-code_highlight_javascript"><span class="p">.</span><span class="nx">bemSetMod</span><span class="p">({</span><span class="nx">block</span><span class="o">:</span> <span class="s1">'b-block'</span><span class="p">,</span> <span class="nx">elem</span><span class="o">:</span> <span class="s1">'elem1'</span><span class="p">},</span> <span class="s1">'mod'</span><span class="p">,</span> <span class="s1">'val'</span><span class="p">)</span></code>
+<code class="b-code b-code_highlight_javascript"><span class="p">.</span><span class="nx">bemMod</span><span class="p">({</span><span class="nx">block</span><span class="o">:</span> <span class="s1">'b-block'</span><span class="p">,</span> <span class="nx">elem</span><span class="o">:</span> <span class="s1">'elem1'</span><span class="p">,</span> <span class="nx">mod</span><span class="o">:</span> <span class="s1">'mod'</span><span class="p">},</span> <span class="s1">'val'</span><span class="p">)</span></code>
 — set modifier <span class="b-text b-text_em_yes">mod</span> to
 <span class="b-text b-text_em_yes">val</span> for each element named
 <span class="b-text b-text_em_yes">elem1</span> that belong to block named
@@ -242,6 +230,17 @@ element named <span class="b-text b-text_em_yes">elem1</span> that belong to
 block named <span class="b-text b-text_nowrap_yes b-text_em_yes">b-block</span>
 from the set of matched DOM elements.
                     </li>
+<li class="b-list__item">
+<code class="b-code b-code_highlight_javascript"><span class="p">.</span><span class="nx">bemMod</span><span class="p">(</span><span class="s1">'mod'</span><span class="p">)</span></code>
+<br>or<br>
+<code class="b-code b-code_highlight_javascript"><span class="p">.</span><span class="nx">bemMod</span><span class="p">({</span><span class="nx">block</span><span class="o">:</span> <span class="s1">'b-block'</span><span class="p">,</span> <span class="nx">mod</span><span class="o">:</span> <span class="s1">'mod'</span><span class="p">})</span></code>
+<br>or<br>
+<code class="b-code b-code_highlight_javascript"><span class="p">.</span><span class="nx">bemMod</span><span class="p">({</span><span class="nx">block</span><span class="o">:</span> <span class="s1">'b-block'</span><span class="p">,</span> <span class="nx">elem</span><span class="o">:</span> <span class="s1">'elem1'</span><span class="p">,</span> <span class="nx">mod</span><span class="o">:</span> <span class="s1">'mod'</span><span class="p">})</span></code>
+— get <span class="b-text b-text_em_yes">mod</span> modifier
+of the first block or the first block named <span class="b-text b-text_em_yes">b-block</span> or
+the first element named <span class="b-text b-text_em_yes">elem1</span> of the block
+named <span class="b-text b-text_em_yes">b-block</span> respectively.
+                    </li>
 </ul>
 
                 <p class="b-paragraph">
@@ -265,9 +264,9 @@ from the set of matched DOM elements.
                 </p>
 
                 <div class="b-code b-code_highlight_javascript b-code_pre_yes"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'*'</span><span class="p">)</span> <span class="c1">// Select all DOM elements.</span>
-    <span class="p">.</span><span class="nx">bemSetMod</span><span class="p">(</span><span class="s1">'mod1'</span><span class="p">,</span> <span class="s1">'val1'</span><span class="p">)</span>
-    <span class="p">.</span><span class="nx">bemSetMod</span><span class="p">(</span><span class="s1">'b-block2'</span><span class="p">,</span> <span class="s1">'mod2'</span><span class="p">,</span> <span class="s1">'val2'</span><span class="p">)</span>
-    <span class="p">.</span><span class="nx">bemSetMod</span><span class="p">({</span><span class="nx">block</span><span class="o">:</span> <span class="s1">'b-block4'</span><span class="p">,</span> <span class="nx">elem</span><span class="o">:</span> <span class="s1">'elem2'</span><span class="p">},</span> <span class="s1">'mod3'</span><span class="p">,</span> <span class="s1">'val3'</span><span class="p">);</span>
+    <span class="p">.</span><span class="nx">bemMod</span><span class="p">(</span><span class="s1">'mod1'</span><span class="p">,</span> <span class="s1">'val1'</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">bemMod</span><span class="p">({</span><span class="nx">block</span><span class="o">:</span> <span class="s1">'b-block2'</span><span class="p">,</span> <span class="nx">mod</span><span class="o">:</span> <span class="s1">'mod2'</span><span class="p">},</span> <span class="s1">'val2'</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">bemMod</span><span class="p">({</span><span class="nx">block</span><span class="o">:</span> <span class="s1">'b-block4'</span><span class="p">,</span> <span class="nx">elem</span><span class="o">:</span> <span class="s1">'elem2'</span><span class="p">,</span> <span class="nx">mod</span><span class="o">:</span> <span class="s1">'mod3'</span><span class="p">},</span> <span class="s1">'val3'</span><span class="p">);</span>
 </pre></div>
 
                 <p class="b-paragraph">
@@ -372,14 +371,14 @@ elements:
 
                 <p class="b-paragraph">And we call:</p>
 
-                <div class="b-code b-code_highlight_javascript b-code_pre_yes"><pre><span class="o">&gt;</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'%b-test'</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">bemSetMod</span><span class="p">(</span><span class="s1">'mod1'</span><span class="p">,</span> <span class="s1">'bla'</span><span class="p">);</span> <span class="c1">// First b-test.</span>
+                <div class="b-code b-code_highlight_javascript b-code_pre_yes"><pre><span class="o">&gt;</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'%b-test'</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">bemMod</span><span class="p">(</span><span class="s1">'mod1'</span><span class="p">,</span> <span class="s1">'bla'</span><span class="p">);</span> <span class="c1">// First b-test.</span>
 <span class="mi">1</span>
 
-<span class="o">&gt;</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'%b-test'</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">bemSetMod</span><span class="p">(</span><span class="s1">'mod1'</span><span class="p">,</span> <span class="s1">'bla'</span><span class="p">);</span> <span class="c1">// Second b-test.</span>
+<span class="o">&gt;</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'%b-test'</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">bemMod</span><span class="p">(</span><span class="s1">'mod1'</span><span class="p">,</span> <span class="s1">'bla'</span><span class="p">);</span> <span class="c1">// Second b-test.</span>
 <span class="nx">boo</span>
 <span class="mi">1</span>
 
-<span class="o">&gt;</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'%b-test'</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="nx">bemSetMod</span><span class="p">(</span><span class="s1">'mod1'</span><span class="p">,</span> <span class="s1">'bla'</span><span class="p">);</span> <span class="c1">// Third b-test.</span>
+<span class="o">&gt;</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'%b-test'</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="nx">bemMod</span><span class="p">(</span><span class="s1">'mod1'</span><span class="p">,</span> <span class="s1">'bla'</span><span class="p">);</span> <span class="c1">// Third b-test.</span>
 <span class="nx">boo</span>
 <span class="mi">1</span>
 <span class="nx">moo</span>
@@ -402,6 +401,6 @@ elements:
 <script>var disqus_shortname = 'xslc', disqus_identifier = 'jquery-bem';</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
 </noscript>
 </div>
-        <footer class="b-footer"><a href="mailto:dakota@brokenpipe.ru">Marat Abdullin</a></footer>
+        <footer class="b-footer"><a href="https://github.com/hoho">Marat Abdullin</a></footer>
     </div></body>
 </html>

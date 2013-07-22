@@ -43,14 +43,16 @@
 
 .b-stuff-item__title
 {
-    font-size: 150%;
+    font-size: 28px;
+
+    font-weight: 200;
 
     margin: 0;
 }
 
 .b-stuff-item__desc
 {
-    font-size: 85%;
+    font-size: 15px;
 
     margin: 0;
 }

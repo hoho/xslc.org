@@ -11,7 +11,7 @@
     <xsl:template match="block:b-footer">
         <footer>
             <xsl:call-template name="block:class" />
-            <a href="mailto:dakota@brokenpipe.ru">Marat Abdullin</a>
+            <a href="https://github.com/hoho">Marat Abdullin</a>
         </footer>
     </xsl:template>
 
