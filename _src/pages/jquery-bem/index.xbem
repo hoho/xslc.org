@@ -41,6 +41,7 @@ plugin is an alternative implementation of just client-side BEM runtime.
                     <elem:item href="#actions">Setting Modifiers and Calling Methods</elem:item>
                     <elem:item href="#decl">JavaScript Declaration</elem:item>
                     <elem:item href="#build">Builders</elem:item>
+                    <elem:item href="#setup">Setup</elem:item>
                     <elem:item href="#example">Example</elem:item>
                 </block:b-contents>
             </elem:content>
@@ -417,6 +418,11 @@ value is: 3
 
         <block:b-section>
             <elem:title anchor="build">Builders</elem:title>
+            <elem:content><block:b-paragraph>Pending.</block:b-paragraph></elem:content>
+        </block:b-section>
+
+        <block:b-section>
+            <elem:title anchor="setup">Setup</elem:title>
             <elem:content><block:b-paragraph>Pending.</block:b-paragraph></elem:content>
         </block:b-section>
 
