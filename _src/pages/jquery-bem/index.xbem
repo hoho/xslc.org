@@ -321,109 +321,144 @@ $('*') // Select all DOM elements.
                 <block:b-paragraph>
 There are two kinds of actions jQuery BEM blocks and elements support:
 <block:b-text mod:em="yes">modifier change</block:b-text> and
-<block:b-text mod:em="yes">method call</block:b-text>. When modifier is being
-changed or method is being called, jQuery BEM matches declared callbacks
+<block:b-text mod:em="yes">method call</block:b-text>. When a modifier is being
+changed or a method is being called, jQuery BEM matches declared callbacks
 against current document state and creates a list of matched callbacks (sorted
-by order of declaration, from the last to first) and calls first callback
-from this list. Below is the example of how to declare actions on blocks and
-elements:
-                </block:b-paragraph>
-
-                <block:b-code mod:highlight="javascript" mod:pre="yes"><![CDATA[
-// Declaration of actions for block b-test.
-$.BEM.decl('b-test')
-    // Callback below will be called in case of changing mod1 modifier of
-    // b-test block.
-    .onMod('mod1', function($super, mod, val, prev) { console.log(1); })
-    .onMod('mod2', function($super, mod, val, prev) { console.log(2); })
-    .elem('elem1')
-        .onMod('emod1', function($super, mod, val, prev) { console.log(11); })
-        // Callback below will be called in case of changing emod2 modifier of
-        // b-test block's elem1 element.
-        .onMod('emod2', function($super, mod, val, prev) { console.log(22); })
-        .end()
-    .onMod('mod3', function($super, mod, val, prev) { console.log(3); })
-    // Callback below will be called when method1 method of b-test block is
-    // called.
-    .onCall('method1', function($super, p1, p2) { return p1 + p2; })
-    .elem('elem2', 'emod3', 'yes')
-        .onMod('emod3', function($super, mod, val, prev) { console.log(33); })
-        .onCall('emethod1', function($super, p1, p2) { return 123; });
-
-// Declaration of actions for block b-test with testmod modifier.
-$.BEM.decl('b-test', 'testmod')
-    // Callbacks below will appear in list of matched callbacks only for b-test
-    // blocks with testmod modifier set.
-    .onMod('mod1',
-        function($super, mod, val, prev) {
-            console.log('boo');
-            // Call earlier declared callback.
-            $super(mod, val, prev);
-        })
-    .onCall('method1',
-        function($super, p1, p2) {
-            // Return some string plus earlier declared callback's result.
-            return 'value is: ' + $super(p1, p2);
-        });
-
-// Declaration of actions for block b-test with testmod=yes modifier.
-$.BEM.decl('b-test', 'testmod', 'yes')
-    // Callback below will appear in list of matched callbacks only for b-test
-    // blocks with testmod modifier set to yes.
-    .onMod('mod1',
-        function($super, mod, val, prev) {
-            // Call earlier declared callback.
-            $super(mod, val, prev);
-            console.log('moo');
-        });
-                ]]></block:b-code>
+by order of declaration, from the last one to the first) and calls the first
+callback from this list.</block:b-paragraph>
 
                 <block:b-paragraph>
-                    Suppose, we have DOM like below:
+<block:b-code mod:highlight="javascript">$.BEM.decl()</block:b-code> and
+<block:b-code mod:highlight="javascript">$.BEM.extend()</block:b-code> methods
+are used to declare callbacks. The last one is meant to extend base declaration,
+all the callbacks passed to
+<block:b-code mod:highlight="javascript">$.BEM.extend()</block:b-code> method
+will be supplied with
+<block:b-code mod:highlight="javascript">$super</block:b-code> as a first
+argument.
                 </block:b-paragraph>
 
-                <block:b-code mod:highlight="html" mod:pre="yes"><![CDATA[
-...
-<body>
-    <div class="b-test">1</div>
-    <div class="b-test b-test_testmod_no">2</div>
-    <div class="b-test b-test_testmod_yes">3</div>
-</body>
-...
-                ]]></block:b-code>
+                <block:b-paragraph>
+Inside all the callbacks
+<block:b-code mod:highlight="javascript">this</block:b-code> is referred to
+current block object. Initially this object has one property and two methods:
+<block:b-code mod:highlight="javascript">$</block:b-code> property points to
+block's jQuery element.
+<block:b-code mod:highlight="javascript">bemMod()</block:b-code> and
+<block:b-code mod:highlight="javascript">bemCall()</block:b-code> methods
+should be used to set modifiers and call methods. You can assign additional
+properties to <block:b-code mod:highlight="javascript">this</block:b-code>
+object, these properties will be accessible from all other callbacks of
+current block.
+                </block:b-paragraph>
 
-                <block:b-paragraph>And we call:</block:b-paragraph>
+                <block:b-paragraph>
+Here is a short example:
+                </block:b-paragraph>
 
                 <block:b-code mod:highlight="javascript" mod:pre="yes"><![CDATA[
-> $('%b-test').eq(0).bemMod('mod1', 'bla'); // First b-test.
-1
+$.BEM.decl('b-block')
+    .onMod('test',
+        function(mod, val, prev) {
+            this['something'] = 987654;
+            console.log('base decl: ' + val);
+        })
+    .onCall('meme',
+        function(arg1, arg2) {
+            console.log(arg1 + ' ' + arg2 + ' ' + this['something']);
+            return 'mimi';
+        });
 
-> $('%b-test').eq(1).bemMod('mod1', 'bla'); // Second b-test.
-boo
-1
+$.BEM.extend('b-block')
+    .onMod('test',
+        function($super, mod, val, prev) {
+            console.log('extend decl: ' + val);
+            $super(mod, val, prev);
+            this['something'] += 1;
+        })
+    .onCall('meme',
+        function($super, arg1, arg2) {
+            return $super(arg1 + 'aaa', arg2 + 'bbb');
+        });
 
-> $('%b-test').eq(2).bemMod('mod1', 'bla'); // Third b-test.
-boo
-1
-moo
+// Let's assume we have <div class="b-block"></div> in our document.
+var b = $('%b-block');
 
-> console.log($('%b-test').eq(0).bemCall('method1', 1, 2)); // First b-test.
-3
+b.bemMod('test', 'ololo');
+> extend decl: ololo
+> base decl: ololo
 
-> console.log($('%b-test').eq(1).bemCall('method1', 1, 2)); // Second b-test.
-value is: 3
+console.log(b.bemCall('meme', 11, 22));
+> 11aaa 22bbb 987655
+> mimi
                 ]]></block:b-code>
             </elem:content>
         </block:b-section>
 
         <block:b-section>
             <elem:title anchor="build">Builders</elem:title>
-            <elem:content><block:b-paragraph>Pending.</block:b-paragraph></elem:content>
+            <elem:content>
+                <block:b-paragraph>
+Modifier changes and method calls are for already existing blocks. Builders
+are a special kind of declaration to build blocks that not yet exist.
+                </block:b-paragraph>
+
+                <block:b-paragraph>
+Some small example is below:
+                </block:b-paragraph>
+
+                <block:b-code mod:highlight="javascript" mod:pre="yes"><![CDATA[
+$.BEM.decl('b-block')
+    .onBuild(
+        function(details) {
+            // First argument is a block's metadata.
+            // jQuery BEM has $.BEM.className() helper to create appropriate
+            // class name from this metadata.
+            console.log(JSON.stringify(details));
+            return ($('<div class="' + $.BEM.className(details) + '"></div>'));
+        });
+
+$.BEM.extend('b-block')
+    .onBuild(
+        function($super, details, arg1, arg2) {
+            // Calling base declaration.
+            var b = $super(details);
+            // Base declaration has returned an empty <div>, put some text in.
+            b.text(arg1 + ' ' + arg2);
+            // `this` points to whatever `context` property says during
+            // $.BEM.build() call. So, append new <div> to <body>.
+            this.append(b);
+            // You can return values from method calls and from builders.
+            return b;
+        });
+
+var tmp = $.BEM.build({
+    block: 'b-block',
+    context: $('body'),
+    mods: {mod1: 123, mod2: 'abc'}
+}, 'Hello', 'world');
+> {"block":"b-block","mods":{"mod1":123,"mod2":"abc"}}
+
+console.log(tmp);
+> [div.b-block b-block_mod1_123 b-block_mod2_abc, jquery: "1.10.2",
+  constructor: function, init: function, selector: "", toArray: function…]
+                ]]></block:b-code>
+            </elem:content>
         </block:b-section>
 
         <block:b-section>
             <elem:title anchor="setup">Setup</elem:title>
-            <elem:content><block:b-paragraph>Pending.</block:b-paragraph></elem:content>
+            <elem:content>
+                <block:b-paragraph>
+It is possible to customize block prefixes. To do that, call
+<block:b-code mod:highlight="javascript">$.BEM.setup({prefixes: '(?:ololo-)'});</block:b-code>.
+In this example we've changed default <block:b-code>b-</block:b-code> and
+<block:b-code>l-</block:b-code> prefixes to  <block:b-code>ololo-</block:b-code>
+prefix. <block:b-code>$.BEM.setup()</block:b-code> should be called before any
+declarations. <block:b-text mod:em="yes">Note that incorrect regular expression
+could break everything.</block:b-text>
+                </block:b-paragraph>
+            </elem:content>
         </block:b-section>
 
         <block:b-section>
