@@ -439,9 +439,8 @@ var tmp = $.BEM.build({
 }, 'Hello', 'world');
 > {"block":"b-block","mods":{"mod1":123,"mod2":"abc"}}
 
-console.log(tmp);
-> [div.b-block b-block_mod1_123 b-block_mod2_abc, jquery: "1.10.2",
-  constructor: function, init: function, selector: "", toArray: function…]
+// `tmp` is a jQuery object pointing to <div> element appended into <body>:
+// <div class="b-block b-block_mod1_123 b-block_mod2_abc">Hello world</div>
                 ]]></block:b-code>
             </elem:content>
         </block:b-section>
