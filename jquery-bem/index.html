@@ -387,10 +387,11 @@ Some small example is below:
     <span class="p">.</span><span class="nx">onBuild</span><span class="p">(</span>
         <span class="kd">function</span><span class="p">(</span><span class="nx">details</span><span class="p">)</span> <span class="p">{</span>
             <span class="c1">// First argument is a block's metadata.</span>
+            <span class="c1">// In this case:</span>
+            <span class="c1">//     {"block": "b-block", "mods": {"mod1": 123, "mod2": "abc"}}</span>
             <span class="c1">// jQuery BEM has $.BEM.className() helper to create appropriate</span>
             <span class="c1">// class name from this metadata.</span>
-            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">details</span><span class="p">));</span>
-            <span class="k">return</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">'&lt;div class="'</span> <span class="o">+</span> <span class="nx">$</span><span class="p">.</span><span class="nx">BEM</span><span class="p">.</span><span class="nx">className</span><span class="p">(</span><span class="nx">details</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'"&gt;&lt;/div&gt;'</span><span class="p">));</span>
+            <span class="k">return</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'&lt;div class="'</span> <span class="o">+</span> <span class="nx">$</span><span class="p">.</span><span class="nx">BEM</span><span class="p">.</span><span class="nx">className</span><span class="p">(</span><span class="nx">details</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'"&gt;&lt;/div&gt;'</span><span class="p">);</span>
         <span class="p">});</span>
 
 <span class="nx">$</span><span class="p">.</span><span class="nx">BEM</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="s1">'b-block'</span><span class="p">)</span>
@@ -412,7 +413,6 @@ Some small example is below:
     <span class="nx">context</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'body'</span><span class="p">),</span>
     <span class="nx">mods</span><span class="o">:</span> <span class="p">{</span><span class="nx">mod1</span><span class="o">:</span> <span class="mi">123</span><span class="p">,</span> <span class="nx">mod2</span><span class="o">:</span> <span class="s1">'abc'</span><span class="p">}</span>
 <span class="p">},</span> <span class="s1">'Hello'</span><span class="p">,</span> <span class="s1">'world'</span><span class="p">);</span>
-<span class="o">&gt;</span> <span class="p">{</span><span class="s2">"block"</span><span class="o">:</span><span class="s2">"b-block"</span><span class="p">,</span><span class="s2">"mods"</span><span class="o">:</span><span class="p">{</span><span class="s2">"mod1"</span><span class="o">:</span><span class="mi">123</span><span class="p">,</span><span class="s2">"mod2"</span><span class="o">:</span><span class="s2">"abc"</span><span class="p">}}</span>
 
 <span class="c1">// `tmp` is a jQuery object pointing to &lt;div&gt; element appended into &lt;body&gt;:</span>
 <span class="c1">// &lt;div class="b-block b-block_mod1_123 b-block_mod2_abc"&gt;Hello world&lt;/div&gt;</span>

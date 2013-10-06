@@ -412,10 +412,11 @@ $.BEM.decl('b-block')
     .onBuild(
         function(details) {
             // First argument is a block's metadata.
+            // In this case:
+            //     {"block": "b-block", "mods": {"mod1": 123, "mod2": "abc"}}
             // jQuery BEM has $.BEM.className() helper to create appropriate
             // class name from this metadata.
-            console.log(JSON.stringify(details));
-            return ($('<div class="' + $.BEM.className(details) + '"></div>'));
+            return $('<div class="' + $.BEM.className(details) + '"></div>');
         });
 
 $.BEM.extend('b-block')
@@ -437,7 +438,6 @@ var tmp = $.BEM.build({
     context: $('body'),
     mods: {mod1: 123, mod2: 'abc'}
 }, 'Hello', 'world');
-> {"block":"b-block","mods":{"mod1":123,"mod2":"abc"}}
 
 // `tmp` is a jQuery object pointing to <div> element appended into <body>:
 // <div class="b-block b-block_mod1_123 b-block_mod2_abc">Hello world</div>
