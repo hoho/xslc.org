@@ -20,6 +20,14 @@
                     <elem:title>XRLT Project</elem:title>
                     <elem:desc>To build web-pages from the server side</elem:desc>
                 </block:b-stuff-item>
+                <block:b-stuff-item mod:js="yes" mod:type="conkitty" href="https://github.com/hoho/conkitty">
+                    <elem:title>Conkitty</elem:title>
+                    <elem:desc>Template Engine</elem:desc>
+                </block:b-stuff-item>
+                <block:b-stuff-item mod:js="yes" mod:type="b-timeline" href="https://github.com/hoho/b-timeline">
+                    <elem:title>b-timeline</elem:title>
+                    <elem:desc>To display events on a plane</elem:desc>
+                </block:b-stuff-item>
             </elem:content>
         </block:b-section>
         <block:b-section>
