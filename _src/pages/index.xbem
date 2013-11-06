@@ -28,7 +28,15 @@
                     <elem:title>b-timeline</elem:title>
                     <elem:desc>To display events on a plane</elem:desc>
                 </block:b-stuff-item>
-            </elem:content>
+                <block:b-stuff-item mod:js="yes" mod:type="b-histery" href="https://github.com/hoho/histery">
+                    <elem:title>Histery.js</elem:title>
+                    <elem:desc>Single page app history handler</elem:desc>
+                </block:b-stuff-item>
+                 <block:b-stuff-item mod:js="yes" mod:type="b-eo" href="https://github.com/hoho/eo">
+                    <elem:title>eo.js</elem:title>
+                    <elem:desc>Inheritable and extendable objects constructor</elem:desc>
+                </block:b-stuff-item>
+             </elem:content>
         </block:b-section>
         <block:b-section>
             <elem:title>Blog</elem:title>
